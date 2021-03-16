@@ -1,7 +1,11 @@
+import AppHeader from "./app-header";
+import AppContent from "./app-content";
+
 export default function AppPage() {
   return (
     <div>
-      <p>App Page</p>
+      <AppHeader />
+      <AppContent />
     </div>
   );
 }
