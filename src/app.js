@@ -1,5 +1,7 @@
 import LoginPage from "./login-page";
 import AppPage from "./app-page";
+import "./app.scss";
+
 import {
   HashRouter as Router,
   Switch,
