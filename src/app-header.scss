@@ -1,5 +1,30 @@
-@import "colors.scss";
+@import "./colors.scss";
 
 #app-header {
-  background-color: $color-medium;
+  height: 3em;
+  font-size: 1.6rem;
+  background-color: $mono-light;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s;
+  }
+  .active {
+    background-color: white;
+    border-bottom: 4px solid $color-dark;
+    color: $color-medium;
+  }
+}
+
+@media (min-width: 768px) {
+  #app-header {
+    grid-template-columns: repeat(4, 8em) 1fr 8em;
+    #logout-button {
+      grid-column: 6;
+    }
+  }
 }
