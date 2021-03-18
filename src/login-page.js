@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import "./login-page.scss";
+import LoginForm from "./login-form";
 
 export default function LoginPage() {
   return (
-    <div>
-      <p>Login Page</p>
-      <Link to="/app">Log In</Link>
+    <div id="login-page">
+      <LoginForm />
     </div>
   );
 }
