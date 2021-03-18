@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@import "./variables-mixins.scss";
 
 #login-form {
   margin: 1em;
@@ -7,6 +7,13 @@
   border-radius: 0.8em;
   background-color: $mono-light;
   box-shadow: 0 3px 8px $mono-medium;
+
+  @include mq($width-sm) {
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
   label {
     display: block;
     margin-bottom: 0.6em;
@@ -32,13 +39,5 @@
     border-radius: 0.4em;
     background-color: $color-dark;
     color: white;
-  }
-}
-
-@media (min-width: 768px) {
-  #login-form {
-    height: 100%;
-    margin: 0;
-    border-radius: 0;
   }
 }

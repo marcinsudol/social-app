@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+$mono-light: #f8f8f8;
+$mono-medium: #bbb;
+$mono-dark: #555;
+
+$color-white: white;
+$color-light: #f5b82e;
+$color-medium: #e3681c;
+$color-dark: #191516;
+
+$font-normal: "Poppins", sans-serif;
+
+$width-sm: 768px;
+
+@mixin mq($width-breakdown) {
+  @media screen and (min-width: $width-breakdown) {
+    @content;
+  }
+}

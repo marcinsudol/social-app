@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@import "./variables-mixins.scss";
 
 #app-header {
   height: 3em;
@@ -7,23 +7,25 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
+  @include mq($width-sm) {
+    grid-template-columns: repeat(4, 8em) 1fr 8em;
+  }
+
   a {
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color 0.5s;
   }
+
   .active {
     background-color: white;
     border-bottom: 4px solid $color-dark;
     color: $color-medium;
   }
-}
 
-@media (min-width: 768px) {
-  #app-header {
-    grid-template-columns: repeat(4, 8em) 1fr 8em;
-    #logout-button {
+  #logout-button {
+    @include mq($width-sm) {
       grid-column: 6;
     }
   }
