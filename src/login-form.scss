@@ -1,20 +1,22 @@
 @import "./colors.scss";
 
 #login-form {
+  margin: 1em;
   padding: 1.6em 1em;
-  border: 1px solid $mono-medium;
+  border: none;
   border-radius: 0.8em;
   background-color: $mono-light;
+  box-shadow: 0 3px 8px $mono-medium;
   label {
     display: block;
     margin-bottom: 0.6em;
-    color: $color-medium;
+    color: $color-dark;
   }
   input {
     width: 100%;
     height: 3em;
     padding: 0 0.6em;
-    border: 1px solid $color-medium;
+    border: 1px solid $mono-medium;
     border-radius: 0.4em;
     margin-bottom: 1em;
     &:focus {
@@ -30,5 +32,13 @@
     border-radius: 0.4em;
     background-color: $color-dark;
     color: white;
+  }
+}
+
+@media (min-width: 768px) {
+  #login-form {
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
   }
 }
