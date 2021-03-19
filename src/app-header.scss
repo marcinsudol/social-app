@@ -1,25 +1,43 @@
 @import "./variables-mixins.scss";
 
 #app-header {
-  height: 3em;
+  height: 3.4em;
   font-size: 1.6rem;
   background-color: $mono-light;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
   @include mq($width-sm) {
+    height: 4em;
     grid-template-columns: repeat(4, 8em) 1fr 8em;
   }
 
   a {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.5s;
+    // border-top: 4px solid $mono-light;
+    // border-bottom: 4px solid $mono-light;
+    transition: background-color border-top 0.5s;
+    svg {
+      font-size: 1.6em;
+      @include mq($width-sm) {
+        font-size: 2em;
+      }
+    }
+    span {
+      font-size: 0.7em;
+      display: none;
+      @include mq($width-sm) {
+        display: block;
+      }
+    }
   }
 
   .active {
     background-color: white;
+    border-top: 4px solid white;
     border-bottom: 4px solid $color-dark;
     color: $color-medium;
   }
