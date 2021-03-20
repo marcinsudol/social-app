@@ -1,5 +1,11 @@
 @import "./variables-mixins.scss";
 
+@keyframes spinning {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 #login-form {
   margin: 1em;
   padding: 1.6em 1em;
@@ -30,7 +36,7 @@
       box-shadow: 0 0 6px 3px $mono-medium;
     }
   }
-  button {
+  #login-button {
     display: block;
     width: 100%;
     height: 3em;
@@ -39,5 +45,19 @@
     border-radius: 0.4em;
     background-color: $color-dark;
     color: white;
+    svg {
+      display: none;
+    }
+    &.logging {
+      span {
+        display: none;
+      }
+      svg {
+        display: block;
+        margin: auto;
+        font-size: 2em;
+        animation: spinning 3s linear infinite;
+      }
+    }
   }
 }

@@ -17,7 +17,7 @@ export default function App() {
     login: () => {
       setTimeout(() => {
         setLogged(true);
-      }, 1000);
+      }, 2000);
     },
     logout: () => {
       setTimeout(() => {
