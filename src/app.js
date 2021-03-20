@@ -1,9 +1,8 @@
 import LoginPage from "./login-page";
 import AppPage from "./app-page";
-import AuthContext from "./auth-context";
+import { authContext, useAuth } from "./auth";
 import "./app.scss";
 
-import { useState } from "react";
 import {
   HashRouter as Router,
   Switch,
@@ -12,22 +11,10 @@ import {
 } from "react-router-dom";
 
 export default function App() {
-  const [logged, setLogged] = useState(false);
-  const [auth, setAuth] = useState({
-    login: () => {
-      setTimeout(() => {
-        setLogged(true);
-      }, 2000);
-    },
-    logout: () => {
-      setTimeout(() => {
-        setLogged(false);
-      }, 500);
-    },
-  });
+  const [user, logged, login, logout] = useAuth();
 
   return (
-    <AuthContext.Provider value={auth}>
+    <authContext.Provider value={{ login, logout }}>
       <Router>
         <Switch>
           {logged ? (
@@ -53,6 +40,6 @@ export default function App() {
           </Route>
         </Switch>
       </Router>
-    </AuthContext.Provider>
+    </authContext.Provider>
   );
 }

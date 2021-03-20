@@ -1,11 +1,11 @@
-import AuthContext from "./auth-context";
+import { authContext } from "./auth";
 import "./login-form.scss";
 
 import { ImSpinner3 as SpinnerIcon } from "react-icons/im";
 import { useContext, useRef } from "react";
 
 export default function LoginForm() {
-  const authContext = useContext(AuthContext);
+  const auth = useContext(authContext);
   const loginButtonRef = useRef();
 
   return (
@@ -14,7 +14,8 @@ export default function LoginForm() {
       onSubmit={(e) => {
         e.preventDefault();
         loginButtonRef.current.classList.add("logging");
-        authContext.login();
+
+        auth.login(1);
       }}
     >
       <label htmlFor="login-username">Username</label>

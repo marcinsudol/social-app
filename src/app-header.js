@@ -1,4 +1,4 @@
-import AuthContext from "./auth-context";
+import { authContext } from "./auth";
 import "./app-header.scss";
 
 import {
@@ -12,7 +12,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function AppHeader() {
-  const authContext = useContext(AuthContext);
+  const auth = useContext(authContext);
 
   return (
     <nav id="app-header">
@@ -36,7 +36,7 @@ export default function AppHeader() {
         <span>Profile</span>
       </NavLink>
 
-      <button id="logout-button" onClick={authContext.logout}>
+      <button id="logout-button" onClick={auth.logout}>
         <IoLogOutOutline />
         <span>Log out</span>
       </button>
