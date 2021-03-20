@@ -6,7 +6,6 @@ import { Switch, Redirect, Route, useRouteMatch } from "react-router-dom";
 
 export default function AppContent() {
   const match = useRouteMatch();
-
   return (
     <div>
       <Switch>

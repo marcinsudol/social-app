@@ -12,13 +12,14 @@
     grid-template-columns: repeat(4, 8em) 1fr 8em;
   }
 
-  a {
+  a,
+  button {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // border-top: 4px solid $mono-light;
-    // border-bottom: 4px solid $mono-light;
+    background: none;
+    border: none;
     transition: background-color border-top 0.5s;
     svg {
       font-size: 1.6em;

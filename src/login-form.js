@@ -1,15 +1,16 @@
-import { useHistory } from "react-router-dom";
+import AuthContext from "./auth-context";
 import "./login-form.scss";
 
-export default function LoginForm() {
-  const history = useHistory();
+import { useContext } from "react";
 
+export default function LoginForm() {
+  const authContext = useContext(AuthContext);
   return (
     <form
       id="login-form"
       onSubmit={(e) => {
         e.preventDefault();
-        history.push("/app");
+        authContext.login();
       }}
     >
       <label htmlFor="login-username">Username</label>
