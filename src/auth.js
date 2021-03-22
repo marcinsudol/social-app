@@ -10,7 +10,7 @@ export const useAuth = () => {
   const login = (user) => {
     setTimeout(() => {
       setUser(user);
-    }, 1000);
+    }, 500);
   };
 
   const logout = () => {

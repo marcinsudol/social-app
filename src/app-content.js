@@ -2,10 +2,14 @@ import Posts from "./posts";
 import Friends from "./friends";
 import Messages from "./messages";
 import Profile from "./profile";
+import { authContext } from "./auth";
+
+import { useContext } from "react";
 import { Switch, Redirect, Route, useRouteMatch } from "react-router-dom";
 
 export default function AppContent() {
   const match = useRouteMatch();
+  const auth = useContext(authContext);
   return (
     <div>
       <Switch>
@@ -22,7 +26,7 @@ export default function AppContent() {
         </Route>
 
         <Route path={`${match.path}/profile`}>
-          <Profile />
+          <Profile userId={auth.user} />
         </Route>
 
         <Redirect from={match.path} to={`${match.path}/posts`} />

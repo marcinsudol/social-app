@@ -14,7 +14,7 @@ export default function App() {
   const [user, logged, login, logout] = useAuth();
 
   return (
-    <authContext.Provider value={{ login, logout }}>
+    <authContext.Provider value={{ user, logged, login, logout }}>
       <Router>
         <Switch>
           {logged ? (
