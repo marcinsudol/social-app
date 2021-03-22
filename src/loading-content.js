@@ -1,11 +1,13 @@
+import LoadingIcon from "./loading-icon";
 import "./loading-content.scss";
-
-import { ImSpinner3 as SpinnerIcon } from "react-icons/im";
 
 export default function LoadingContent() {
   return (
     <div className="loading-content">
-      <SpinnerIcon />
+      <i>
+        <LoadingIcon />
+      </i>
+      <p>Loading</p>
     </div>
   );
 }

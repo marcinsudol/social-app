@@ -1,0 +1,12 @@
+@keyframes spinning {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-icon {
+  svg {
+    display: block;
+    animation: spinning 3s linear infinite;
+  }
+}
