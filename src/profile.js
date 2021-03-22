@@ -37,10 +37,10 @@ export default function Profile({ userId }) {
   }, [fetchError]);
 
   return (
-    <LoadableComponent loading={loading}>
+    <LoadableComponent loading={loading} error={error}>
       <FullSizedComponent>
         <div id="profile">
-          {!error ? <p>Profile loaded</p> : <p>{error}</p>}
+          <p>Profile</p>
         </div>
       </FullSizedComponent>
     </LoadableComponent>

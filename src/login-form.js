@@ -14,7 +14,7 @@ export default function LoginForm() {
       onSubmit={(e) => {
         e.preventDefault();
         setLoading(true);
-        auth.login(1);
+        auth.login(11321);
       }}
     >
       <label htmlFor="login-username">Username</label>
