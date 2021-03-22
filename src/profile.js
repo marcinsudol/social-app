@@ -1,6 +1,8 @@
-import { useEffect } from "react";
 import LoadingContent from "./loading-content";
 import { useFetchJson } from "./use-fetch-json";
+import "./profile.scss";
+
+import { useEffect } from "react";
 
 export default function Profile({ userId }) {
   const [users, loaded, error, fetchUsers] = useFetchJson();
@@ -10,7 +12,7 @@ export default function Profile({ userId }) {
   }, [fetchUsers]);
 
   return (
-    <div>
+    <div id="profile">
       {!loaded && !error ? (
         <LoadingContent />
       ) : loaded ? (
