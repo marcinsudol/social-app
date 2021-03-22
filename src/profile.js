@@ -1,4 +1,5 @@
 import LoadableComponent from "./loadable-component";
+import FullSizedComponent from "./full-sized-component";
 import { useFetchJson } from "./use-fetch-json";
 import "./profile.scss";
 
@@ -13,9 +14,11 @@ export default function Profile({ userId }) {
 
   return (
     <LoadableComponent loading={!loaded && !error}>
-      <div id="profile">
-        {loaded ? <p>Profile loaded</p> : <p>Error loading</p>}
-      </div>
+      <FullSizedComponent>
+        <div id="profile">
+          {loaded ? <p>Profile loaded</p> : <p>Error loading</p>}
+        </div>
+      </FullSizedComponent>
     </LoadableComponent>
   );
 }

@@ -1,4 +1,6 @@
+@import "./variables-mixins.scss";
+
 #profile {
-  height: 100%;
-  width: 100%;
+  font-size: 1.6rem;
+  color: $color-medium;
 }
