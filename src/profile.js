@@ -1,5 +1,6 @@
 import LoadableComponent from "./loadable-component";
 import FullSizedComponent from "./full-sized-component";
+import ProfileStatisticCard from "./profile-statistic-card";
 import { useFetchJson } from "./use-fetch-json";
 import "./profile.scss";
 
@@ -8,6 +9,7 @@ import { useEffect, useMemo, useState } from "react";
 export default function Profile({ userId }) {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+
   const loading = useMemo(() => !user && !error, [user, error]);
 
   const [users, fetchError, fetchUsers] = useFetchJson();
@@ -39,9 +41,22 @@ export default function Profile({ userId }) {
   return (
     <LoadableComponent loading={loading} error={error}>
       <FullSizedComponent>
-        <div id="profile">
-          <p>Profile</p>
-        </div>
+        {user ? (
+          <div id="profile">
+            <div id="profile-avatar"></div>
+            <div id="profile-header">
+              <h1 className="display-name">
+                {user.firstName + " " + user.lastName}
+              </h1>
+              <p>{user.info}</p>
+            </div>
+            <div id="profile-statistics">
+              <ProfileStatisticCard label={"Friends"} value={136} />
+              <ProfileStatisticCard label={"Posts"} value={342} />
+              <ProfileStatisticCard label={"Comments"} value={752} />
+            </div>
+          </div>
+        ) : null}
       </FullSizedComponent>
     </LoadableComponent>
   );

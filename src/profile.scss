@@ -2,5 +2,22 @@
 
 #profile {
   font-size: 1.6rem;
-  color: $color-medium;
+
+  #profile-header {
+    margin: 1em;
+    padding: 1em;
+    background-color: $mono-light;
+    border-radius: 0.6em;
+    .display-name {
+      font-size: 1.6em;
+      color: $color-medium;
+    }
+  }
+
+  #profile-statistics {
+    margin: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+    gap: 1em;
+  }
 }
