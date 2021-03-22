@@ -1,16 +1,26 @@
 @import "./variables-mixins.scss";
 
 .error-content {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   h2 {
     font-size: 1.4em;
     color: $color-medium;
   }
+
   p {
     color: $color-dark;
+    margin-bottom: 2em;
+  }
+
+  a {
+    padding: 1em 2em;
+    background-color: $color-dark;
+    color: white;
+    border-radius: 0.4em;
   }
 }

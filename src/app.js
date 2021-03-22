@@ -1,5 +1,7 @@
 import LoginPage from "./login-page";
 import AppPage from "./app-page";
+import ErrorContent from "./error-content";
+import FullScreenComponent from "./full-screen-component";
 import { authContext, useAuth } from "./auth";
 import "./app.scss";
 
@@ -31,12 +33,18 @@ export default function App() {
             <AppPage />
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             {logged ? (
               <Redirect from="/" to="/app" />
             ) : (
               <Redirect from="/" to="/login" />
             )}
+          </Route>
+
+          <Route path="*">
+            <FullScreenComponent>
+              <ErrorContent error={"Page does not exist"} />
+            </FullScreenComponent>
           </Route>
         </Switch>
       </Router>

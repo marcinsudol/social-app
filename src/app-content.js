@@ -2,6 +2,7 @@ import Posts from "./posts";
 import Friends from "./friends";
 import Messages from "./messages";
 import Profile from "./profile";
+import ErrorContent from "./error-content";
 import { authContext } from "./auth";
 
 import { useContext } from "react";
@@ -29,7 +30,11 @@ export default function AppContent() {
           <Profile userId={auth.user} />
         </Route>
 
-        <Redirect from={match.path} to={`${match.path}/posts`} />
+        <Redirect exact from={match.path} to={`${match.path}/posts`} />
+
+        <Route path="*">
+          <ErrorContent error={"Page does not exist"} />
+        </Route>
       </Switch>
     </div>
   );
