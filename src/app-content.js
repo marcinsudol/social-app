@@ -12,30 +12,28 @@ export default function AppContent() {
   const match = useRouteMatch();
   const auth = useContext(authContext);
   return (
-    <div>
-      <Switch>
-        <Route path={`${match.path}/posts`}>
-          <Posts />
-        </Route>
+    <Switch>
+      <Route path={`${match.path}/posts`}>
+        <Posts />
+      </Route>
 
-        <Route path={`${match.path}/friends`}>
-          <Friends />
-        </Route>
+      <Route path={`${match.path}/friends`}>
+        <Friends />
+      </Route>
 
-        <Route path={`${match.path}/messages`}>
-          <Messages />
-        </Route>
+      <Route path={`${match.path}/messages`}>
+        <Messages />
+      </Route>
 
-        <Route path={`${match.path}/profile`}>
-          <Profile userId={auth.user} />
-        </Route>
+      <Route path={`${match.path}/profile`}>
+        <Profile userId={auth.user} />
+      </Route>
 
-        <Redirect exact from={match.path} to={`${match.path}/posts`} />
+      <Redirect exact from={match.path} to={`${match.path}/posts`} />
 
-        <Route path="*">
-          <ErrorContent error={"Page does not exist"} />
-        </Route>
-      </Switch>
-    </div>
+      <Route path="*">
+        <ErrorContent error={"Page does not exist"} />
+      </Route>
+    </Switch>
   );
 }

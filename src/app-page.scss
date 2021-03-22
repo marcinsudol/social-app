@@ -1,0 +1,10 @@
+#app-page {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-rows: auto 1fr;
+
+  #app-content-wrapper {
+    overflow-y: auto;
+  }
+}

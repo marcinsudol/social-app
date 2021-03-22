@@ -40,8 +40,8 @@ export default function Profile({ userId }) {
   }, [fetchError]);
 
   return (
-    <LoadableComponent loading={loading} error={error}>
-      <FullSizedComponent>
+    <FullSizedComponent>
+      <LoadableComponent loading={loading} error={error}>
         {user ? (
           <div id="profile">
             <div id="profile-avatar">
@@ -60,7 +60,7 @@ export default function Profile({ userId }) {
             </div>
           </div>
         ) : null}
-      </FullSizedComponent>
-    </LoadableComponent>
+      </LoadableComponent>
+    </FullSizedComponent>
   );
 }
