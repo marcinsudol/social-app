@@ -2,26 +2,22 @@ import { useCallback, useEffect, useState } from "react";
 
 export function useFetchJson() {
   const [data, setData] = useState(null);
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [abortController] = useState(new AbortController());
 
   const fetchJson = useCallback(
     (url) => {
       setData(null);
-      setLoaded(false);
-      setError(false);
+      setError(null);
 
       fetch(url, { signal: abortController.signal })
         .then((response) => response.json())
         .then((fetchedData) => {
-          setLoaded(true);
           setData(fetchedData);
         })
         .catch((e) => {
           if (!abortController.signal.aborted) {
-            setError(true);
-            setData(e);
+            setError(e);
           }
         });
     },
@@ -34,5 +30,5 @@ export function useFetchJson() {
     };
   }, [abortController]);
 
-  return [data, loaded, error, fetchJson];
+  return [data, error, fetchJson];
 }
