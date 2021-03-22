@@ -5,6 +5,7 @@ import { useFetchJson } from "./use-fetch-json";
 import "./profile.scss";
 
 import { useEffect, useMemo, useState } from "react";
+import Avatar from "./avatar";
 
 export default function Profile({ userId }) {
   const [user, setUser] = useState(null);
@@ -43,7 +44,9 @@ export default function Profile({ userId }) {
       <FullSizedComponent>
         {user ? (
           <div id="profile">
-            <div id="profile-avatar"></div>
+            <div id="profile-avatar">
+              <Avatar user={user} fontSize={"5em"} />
+            </div>
             <div id="profile-header">
               <h1 className="display-name">
                 {user.firstName + " " + user.lastName}

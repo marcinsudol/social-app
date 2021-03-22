@@ -1,0 +1,10 @@
+.avatar {
+  height: 1.8em;
+  width: 1.8em;
+  filter: brightness(200%) grayscale(80%);
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}

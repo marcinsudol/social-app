@@ -3,6 +3,13 @@
 #profile {
   font-size: 1.6rem;
 
+  #profile-avatar {
+    margin: 4em 1em 2em 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   #profile-header {
     margin: 1em;
     padding: 1em;
