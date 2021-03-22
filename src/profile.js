@@ -1,4 +1,4 @@
-import LoadingContent from "./loading-content";
+import LoadableComponent from "./loadable-component";
 import { useFetchJson } from "./use-fetch-json";
 import "./profile.scss";
 
@@ -12,14 +12,10 @@ export default function Profile({ userId }) {
   }, [fetchUsers]);
 
   return (
-    <div id="profile">
-      {!loaded && !error ? (
-        <LoadingContent />
-      ) : loaded ? (
-        <p>Profile loaded</p>
-      ) : (
-        <p>Error loading</p>
-      )}
-    </div>
+    <LoadableComponent loading={!loaded && !error}>
+      <div id="profile">
+        {loaded ? <p>Profile loaded</p> : <p>Error loading</p>}
+      </div>
+    </LoadableComponent>
   );
 }
