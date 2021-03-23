@@ -5,6 +5,7 @@ import { useFetchJson } from "./use-fetch-json";
 import "./profile.scss";
 
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import Avatar from "./avatar";
 
 export default function Profile({ userId }) {
@@ -59,6 +60,12 @@ export default function Profile({ userId }) {
                 <ProfileStatisticCard label={"Posts"} value={342} />
                 <ProfileStatisticCard label={"Comments"} value={752} />
               </div>
+              <Link
+                id="open-conversation-button"
+                to={`/app/messages/${userId}`}
+              >
+                Open conversation
+              </Link>
             </div>
           </div>
         ) : null}

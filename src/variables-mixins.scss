@@ -11,10 +11,8 @@ $color-dark: #191516;
 
 $font-normal: "Poppins", sans-serif;
 
-$width-sm: 768px;
-
 @mixin media-sm {
-  @media screen and (min-width: $width-sm) {
+  @media screen and (min-width: 768px) {
     @content;
   }
 }

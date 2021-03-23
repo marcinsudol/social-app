@@ -36,4 +36,14 @@
     grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
     gap: 1em;
   }
+
+  #open-conversation-button {
+    display: block;
+    margin: 1em;
+    padding: 0.6em;
+    border-radius: 0.6em;
+    background-color: $color-medium;
+    color: white;
+    text-align: center;
+  }
 }
