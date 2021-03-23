@@ -1,5 +1,37 @@
 import { useCallback, useEffect, useState } from "react";
 
+export function useFetchUser(userId) {
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+  const [users, fetchError, fetchUsers] = useFetchJson();
+
+  // fetch users
+  useEffect(() => {
+    fetchUsers("./data/users.json");
+  }, [fetchUsers]);
+
+  // set correct user after fetching
+  useEffect(() => {
+    if (users) {
+      const foundUser = users.find((user) => user.id === userId);
+      if (foundUser) {
+        setUser(foundUser);
+      } else {
+        setError("User does not exist");
+      }
+    }
+  }, [userId, users]);
+
+  // fetch error
+  useEffect(() => {
+    if (fetchError) {
+      setError("Error while fetching the data");
+    }
+  }, [fetchError]);
+
+  return [user, error];
+}
+
 export function useFetchJson() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);

@@ -1,0 +1,18 @@
+@import "./variables-mixins.scss";
+
+#friends {
+  font-size: 1.6rem;
+  padding: 1em;
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0.4em;
+    color: $mono-medium;
+  }
+
+  #friends-cards {
+    display: grid;
+    gap: 0.6em;
+    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+  }
+}

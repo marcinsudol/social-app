@@ -1,0 +1,19 @@
+@import "./variables-mixins.scss";
+
+.friend-card {
+  height: 6em;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  background-color: $mono-light;
+  border-radius: 0.6em;
+  transition: all 0.2s;
+
+  .friend-avatar {
+    margin: 1em;
+  }
+
+  .friend-info {
+    text-align: left;
+  }
+}
