@@ -13,8 +13,8 @@ $font-normal: "Poppins", sans-serif;
 
 $width-sm: 768px;
 
-@mixin mq($width-breakdown) {
-  @media screen and (min-width: $width-breakdown) {
+@mixin media-sm {
+  @media screen and (min-width: $width-sm) {
     @content;
   }
 }

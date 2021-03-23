@@ -3,11 +3,20 @@
 #profile {
   font-size: 1.6rem;
 
+  @include media-sm {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
   #profile-avatar {
     margin: 4em 1em 2em 1em;
     display: flex;
     justify-content: center;
     align-items: center;
+    @include media-sm {
+      margin: 2em 1em;
+      align-self: flex-start;
+    }
   }
 
   #profile-header {

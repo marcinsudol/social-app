@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
-  @include mq($width-sm) {
+  @include media-sm {
     height: 4em;
     grid-template-columns: repeat(4, 8em) 1fr 8em;
   }
@@ -23,14 +23,14 @@
     transition: background-color border-top 0.5s;
     svg {
       font-size: 1.6em;
-      @include mq($width-sm) {
+      @include media-sm {
         font-size: 2em;
       }
     }
     span {
       font-size: 0.7em;
       display: none;
-      @include mq($width-sm) {
+      @include media-sm {
         display: block;
       }
     }
@@ -47,7 +47,7 @@
     &:active {
       color: $color-medium;
     }
-    @include mq($width-sm) {
+    @include media-sm {
       grid-column: 6;
     }
   }
