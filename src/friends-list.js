@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import FullSizedComponent from "./full-sized-component";
 import LoadableComponent from "./loadable-component";
 import FriendCard from "./friend-card";
-import "./friends.scss";
+import "./friends-list.scss";
 
-export default function Friends() {
+export default function FriendsList() {
   const [friends, error, fetchFriends] = useFetchJson();
 
   // fetch users
@@ -17,11 +17,11 @@ export default function Friends() {
     <FullSizedComponent>
       <LoadableComponent loading={!friends && !error} error={error}>
         {friends ? (
-          <div id="friends">
+          <div id="friends-list">
             <h1>Friends</h1>
             <div id="friends-cards">
               {friends.map((user) => (
-                <FriendCard user={user} />
+                <FriendCard user={user} key={user.id} />
               ))}
             </div>
           </div>

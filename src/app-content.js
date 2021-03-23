@@ -1,5 +1,6 @@
 import Posts from "./posts";
-import Friends from "./friends";
+import FriendsList from "./friends-list";
+import FriendProfile from "./friend-profile";
 import Messages from "./messages";
 import Profile from "./profile";
 import ErrorContent from "./error-content";
@@ -17,8 +18,12 @@ export default function AppContent() {
         <Posts />
       </Route>
 
+      <Route path={`${match.path}/friends/:friendId`}>
+        <FriendProfile />
+      </Route>
+
       <Route path={`${match.path}/friends`}>
-        <Friends />
+        <FriendsList />
       </Route>
 
       <Route path={`${match.path}/messages`}>
