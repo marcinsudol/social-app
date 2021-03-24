@@ -8,7 +8,7 @@ import "./friends-list.scss";
 export default function FriendsList() {
   const [friends, error, fetchFriends] = useFetchJson();
 
-  // fetch users
+  // fetch friends
   useEffect(() => {
     fetchFriends("./data/friends.json");
   }, [fetchFriends]);

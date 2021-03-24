@@ -1,7 +1,11 @@
+import Conversation from "./conversation";
+import { FriendSelector } from "./friend-selector";
+import "./messages.scss";
 export default function Messages() {
   return (
-    <div>
-      <p>Messages</p>
+    <div id="messages">
+      <FriendSelector />
+      <Conversation />
     </div>
   );
 }

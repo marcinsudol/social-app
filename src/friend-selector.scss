@@ -1,0 +1,13 @@
+@import "./variables-mixins.scss";
+
+#friend-selector {
+  overflow-y: auto;
+  padding: 0.8em;
+  background-color: $mono-light;
+  border-right: 1px solid $mono-medium;
+  a {
+    display: block;
+    margin-bottom: 0.6em;
+    border-radius: 9999px;
+  }
+}

@@ -26,6 +26,10 @@ export default function AppContent() {
         <FriendsList />
       </Route>
 
+      <Route path={`${match.path}/messages/:friendId`}>
+        <Messages />
+      </Route>
+
       <Route path={`${match.path}/messages`}>
         <Messages />
       </Route>
