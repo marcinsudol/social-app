@@ -3,21 +3,21 @@ import { createContext, useMemo, useState } from "react";
 export const authContext = createContext();
 
 export const useAuth = () => {
-  const [user, setUser] = useState(false);
+  const [userId, setUserId] = useState(false);
 
-  let logged = useMemo(() => !!user, [user]);
+  let logged = useMemo(() => !!userId, [userId]);
 
-  const login = (user) => {
+  const login = (userId) => {
     setTimeout(() => {
-      setUser(user);
+      setUserId(userId);
     }, 500);
   };
 
   const logout = () => {
     setTimeout(() => {
-      setUser(null);
+      setUserId(null);
     }, 500);
   };
 
-  return [user, logged, login, logout];
+  return [userId, logged, login, logout];
 };

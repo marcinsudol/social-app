@@ -31,7 +31,7 @@ export default function AppContent() {
       </Route>
 
       <Route path={`${match.path}/profile`}>
-        <Profile userId={auth.user} />
+        <Profile userId={auth.userId} />
       </Route>
 
       <Redirect exact from={match.path} to={`${match.path}/posts`} />

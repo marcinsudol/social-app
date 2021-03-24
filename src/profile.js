@@ -1,14 +1,18 @@
 import LoadableComponent from "./loadable-component";
 import FullSizedComponent from "./full-sized-component";
 import ProfileStatisticCard from "./profile-statistic-card";
+import Avatar from "./avatar";
 import { useFetchUser } from "./use-fetch";
+import { authContext } from "./auth";
 import "./profile.scss";
 
 import { Link } from "react-router-dom";
-import Avatar from "./avatar";
+import { useContext, useMemo } from "react";
 
 export default function Profile({ userId }) {
   const [user, error] = useFetchUser(userId);
+  const auth = useContext(authContext);
+  const profileOwner = useMemo(() => userId === auth.userId, [userId, auth]);
 
   return (
     <FullSizedComponent>
@@ -30,12 +34,14 @@ export default function Profile({ userId }) {
                 <ProfileStatisticCard label={"Posts"} value={342} />
                 <ProfileStatisticCard label={"Comments"} value={752} />
               </div>
-              <Link
-                id="open-conversation-button"
-                to={`/app/messages/${userId}`}
-              >
-                Open conversation
-              </Link>
+              {!profileOwner && (
+                <Link
+                  id="open-conversation-button"
+                  to={`/app/messages/${userId}`}
+                >
+                  Open conversation
+                </Link>
+              )}
             </div>
           </div>
         ) : null}
