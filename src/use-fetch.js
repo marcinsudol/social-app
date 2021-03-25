@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
+import { authContext } from "./auth";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 export function useFetchUser(userId) {
   const [user, setUser] = useState(null);
@@ -32,6 +33,55 @@ export function useFetchUser(userId) {
   return [user, error];
 }
 
+export function useFetchMessages(friendId) {
+  const [messages, setMessages] = useState(null);
+  const [error, setError] = useState(null);
+  const auth = useContext(authContext);
+  const [allMessages, fetchError, fetchAllMessages] = useFetchJson();
+
+  // reset messages when friend id changes
+  // useEffect(() => {
+  //   setMessages(null);
+  //   setError(null);
+  // }, [friendId]);
+
+  // fetch all messages
+  useEffect(() => {
+    fetchAllMessages("./data/messages.json");
+  }, [fetchAllMessages]);
+
+  // filter messages
+  useEffect(() => {
+    if (allMessages) {
+      let filteredMessages = allMessages.filter(
+        (message) =>
+          (message.userId === auth.userId && message.friendId === friendId) ||
+          (message.userId === friendId && message.friendId === auth.userId)
+      );
+      let sortedMessages = filteredMessages.sort((message1, message2) => {
+        let date1 = new Date(message1.createdAt);
+        let date2 = new Date(message2.createdAt);
+        return date1.getTime() <= date2.getTime();
+      });
+
+      console.log(filteredMessages);
+      console.log(sortedMessages);
+
+      setMessages(sortedMessages);
+    }
+  }, [auth, friendId, allMessages]);
+
+  // fetch error
+  useEffect(() => {
+    if (fetchError) {
+      setError("Error while fetching the data");
+    }
+  }, [fetchError]);
+
+  return [messages, error];
+}
+
+// fetch json file
 export function useFetchJson() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);

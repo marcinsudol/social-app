@@ -1,6 +1,23 @@
+@import "./variables-mixins.scss";
+
 #messages {
   font-size: 1.6rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
   height: 100%;
+
+  @include media-sm {
+    display: grid;
+    grid-template-columns: 24em 1fr;
+  }
+
+  #selector-wrapper {
+    overflow-y: auto;
+  }
+
+  #conversation-wrapper {
+    display: none;
+    overflow-y: auto;
+    @include media-sm {
+      display: block;
+    }
+  }
 }

@@ -5,6 +5,7 @@ import "./friend-selector.scss";
 
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { IoChevronForwardCircleOutline } from "react-icons/io5";
 
 export function FriendSelector() {
   const [friends, error, fetchFriends] = useFetchJson();
@@ -21,6 +22,10 @@ export function FriendSelector() {
           {friends.map((user) => (
             <Link to={`/app/messages/${user.id}`} key={user.id}>
               <Avatar user={user} fontSize={"2em"} />
+              <p className="friend-name">
+                {user.firstName + " " + user.lastName}
+              </p>
+              <IoChevronForwardCircleOutline />
             </Link>
           ))}
         </nav>
