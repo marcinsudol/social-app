@@ -39,12 +39,6 @@ export function useFetchMessages(friendId) {
   const auth = useContext(authContext);
   const [allMessages, fetchError, fetchAllMessages] = useFetchJson();
 
-  // reset messages when friend id changes
-  // useEffect(() => {
-  //   setMessages(null);
-  //   setError(null);
-  // }, [friendId]);
-
   // fetch all messages
   useEffect(() => {
     fetchAllMessages("./data/messages.json");
@@ -58,16 +52,14 @@ export function useFetchMessages(friendId) {
           (message.userId === auth.userId && message.friendId === friendId) ||
           (message.userId === friendId && message.friendId === auth.userId)
       );
-      let sortedMessages = filteredMessages.sort((message1, message2) => {
-        let date1 = new Date(message1.createdAt);
-        let date2 = new Date(message2.createdAt);
-        return date1.getTime() <= date2.getTime();
-      });
-
-      console.log(filteredMessages);
-      console.log(sortedMessages);
+      let sortedMessages = filteredMessages.sort(
+        (message1, message2) =>
+          new Date(message1.createdAt).getTime() -
+          new Date(message2.createdAt).getTime()
+      );
 
       setMessages(sortedMessages);
+      setError(null);
     }
   }, [auth, friendId, allMessages]);
 

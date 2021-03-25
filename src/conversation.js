@@ -5,8 +5,6 @@ import "./conversation.scss";
 
 export default function Conversation({ friendId }) {
   const [messages, error] = useFetchMessages(friendId);
-  console.log(messages);
-  console.log(error);
 
   return (
     <FullSizedComponent>
