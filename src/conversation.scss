@@ -1,2 +1,11 @@
+@import "./variables-mixins.scss";
+
 #conversation {
+  padding: 1em;
+
+  h1 {
+    font-size: 2em;
+    margin-bottom: 0.4em;
+    color: $mono-medium;
+  }
 }
