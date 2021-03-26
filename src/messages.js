@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import Conversation from "./conversation";
 import { FriendSelector } from "./friend-selector";
+import FullSizedComponent from "./full-sized-component";
 import "./messages.scss";
 
 export default function Messages() {
@@ -17,7 +18,11 @@ export default function Messages() {
         {friendId ? (
           <Conversation friendId={Number(friendId)} />
         ) : (
-          <p>Select contact to start conversation</p>
+          <FullSizedComponent>
+            <div id="conversation-pane">
+              <h1>Select contact to start conversation</h1>
+            </div>
+          </FullSizedComponent>
         )}
       </div>
     </div>

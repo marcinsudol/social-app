@@ -21,9 +21,11 @@
 
   .message-content {
     padding: 0.6em;
+    margin-bottom: 0.6em;
     background-color: $color-medium;
     color: white;
     border-radius: 0.6em;
+    box-shadow: 0 3px 6px $mono-medium;
   }
   &.sent .message-content {
     background-color: $mono-light;
@@ -33,5 +35,9 @@
 
   .message-date {
     font-size: 0.8em;
+  }
+
+  &.sent .message-date {
+    text-align: right;
   }
 }

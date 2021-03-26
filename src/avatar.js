@@ -5,7 +5,7 @@ export default function Avatar({ user, fontSize }) {
   const initials = user.firstName[0] + user.lastName[0];
   const brightness = tinycolor(user.color).getBrightness();
   let fontColor = "black";
-  if (brightness < 130) fontColor = "white";
+  if (brightness < 160) fontColor = "white";
 
   return (
     <div
