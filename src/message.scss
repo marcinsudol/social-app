@@ -20,21 +20,20 @@
   }
 
   .message-content {
-    padding: 0.6em;
+    padding: 0.6em 1em;
     margin-bottom: 0.6em;
     background-color: $color-medium;
     color: white;
     border-radius: 0.6em;
-    box-shadow: 0 3px 6px $mono-medium;
   }
   &.sent .message-content {
     background-color: $mono-light;
     color: $color-dark;
-    border: 1px solid $mono-medium;
   }
 
   .message-date {
     font-size: 0.8em;
+    color: $mono-dark;
   }
 
   &.sent .message-date {

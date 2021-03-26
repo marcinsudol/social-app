@@ -9,4 +9,10 @@
   @include media-sm {
     padding: 3em;
   }
+
+  #posts-list {
+    width: 100%;
+    max-width: 60em;
+    list-style: none;
+  }
 }

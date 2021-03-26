@@ -12,9 +12,15 @@ export default function Posts() {
     <FullSizedComponent>
       <LoadableComponent loading={!posts && !error} error={error}>
         <div id="posts">
-          {posts
-            ? posts.map((post) => <Post post={post} key={post.id} />)
-            : null}
+          <ol id="posts-list">
+            {posts
+              ? posts.map((post) => (
+                  <li key={post.id}>
+                    <Post post={post} />
+                  </li>
+                ))
+              : null}
+          </ol>
         </div>
       </LoadableComponent>
     </FullSizedComponent>

@@ -11,7 +11,7 @@ export default function Post({ post }) {
   return (
     <div className="post">
       <div className="post-avatar">
-        <Avatar user={post.user} />
+        <Avatar user={post.user} fontSize="1.2em" />
       </div>
 
       <div className="post-body">
