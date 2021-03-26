@@ -8,4 +8,28 @@
     margin-bottom: 0.4em;
     color: $mono-medium;
   }
+
+  #messages-list {
+    list-style: none;
+  }
+
+  #send-message-form {
+    @include media-sm {
+      margin-top: 2em;
+    }
+    display: grid;
+    grid-template-columns: 1fr auto;
+    input {
+      padding: 0.5em;
+      border-radius: 0.5em;
+      border: 1px solid $mono-medium;
+    }
+    button {
+      margin-left: 0.6em;
+      padding: 0.5em 1em;
+      background-color: $color-light;
+      border-radius: 0.5em;
+      border: none;
+    }
+  }
 }
