@@ -47,15 +47,15 @@ export function useFetchMessages(friendId) {
   // filter messages
   useEffect(() => {
     if (allMessages) {
-      let filteredMessages = allMessages.filter(
+      const filteredMessages = allMessages.filter(
         (message) =>
           (message.userId === auth.userId && message.friendId === friendId) ||
           (message.userId === friendId && message.friendId === auth.userId)
       );
-      let sortedMessages = filteredMessages.sort(
-        (message1, message2) =>
-          new Date(message1.createdAt).getTime() -
-          new Date(message2.createdAt).getTime()
+      const sortedMessages = filteredMessages.sort(
+        (item1, item2) =>
+          new Date(item1.createdAt).getTime() -
+          new Date(item2.createdAt).getTime()
       );
 
       setMessages(sortedMessages);
@@ -71,6 +71,48 @@ export function useFetchMessages(friendId) {
   }, [fetchError]);
 
   return [messages, error];
+}
+
+// fetch posts
+export function useFetchPosts() {
+  const [richPosts, setRichPosts] = useState(null);
+  const [error, setError] = useState(null);
+  const [posts, fetchPostsError, fetchPosts] = useFetchJson();
+  const [users, fetchUsersError, fetchUsers] = useFetchJson();
+
+  // fetch posts
+  useEffect(() => {
+    fetchPosts("./data/posts.json");
+  }, [fetchPosts]);
+
+  // fetch users
+  useEffect(() => {
+    fetchUsers("./data/users.json");
+  }, [fetchUsers]);
+
+  // sort posts and add user data
+  useEffect(() => {
+    if (posts && users) {
+      const sortedPosts = posts.sort(
+        (item1, item2) =>
+          new Date(item2.createdAt).getTime() -
+          new Date(item1.createdAt).getTime()
+      );
+      sortedPosts.forEach((item) => {
+        item["user"] = users.find((user) => user.id === item.userId);
+      });
+      setRichPosts(sortedPosts);
+    }
+  }, [posts, users]);
+
+  // fetch error
+  useEffect(() => {
+    if (fetchPostsError || fetchUsersError) {
+      setError("Error while fetching the data");
+    }
+  }, [fetchPostsError, fetchUsersError]);
+
+  return [richPosts, error];
 }
 
 // fetch json file

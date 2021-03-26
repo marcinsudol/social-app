@@ -1,8 +1,6 @@
 @import "./variables-mixins.scss";
 
 #profile {
-  font-size: 1.6rem;
-
   @include media-sm {
     display: grid;
     grid-template-columns: auto 1fr;

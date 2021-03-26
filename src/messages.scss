@@ -1,7 +1,6 @@
 @import "./variables-mixins.scss";
 
 #messages {
-  font-size: 1.6rem;
   height: 100%;
 
   #conversation-pane {
@@ -10,6 +9,7 @@
     align-items: center;
     font-size: 2em;
     color: $mono-medium;
+    text-align: center;
   }
 
   #selector-wrapper,

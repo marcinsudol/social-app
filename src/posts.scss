@@ -1,0 +1,12 @@
+@import "./variables-mixins.scss";
+
+#posts {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media-sm {
+    padding: 3em;
+  }
+}

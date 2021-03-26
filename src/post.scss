@@ -1,0 +1,28 @@
+@import "./variables-mixins.scss";
+
+.post {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  border: 1px solid $mono-medium;
+  border-radius: 1em;
+  overflow: hidden;
+  margin-bottom: 2em;
+  box-shadow: 0 3px 6px $mono-medium;
+  width: 100%;
+  max-width: 60em;
+
+  .post-avatar {
+    padding: 0.8em;
+  }
+
+  .post-body {
+    padding: 0.6em;
+    border-left: 1px solid $mono-medium;
+    background-color: $mono-light;
+
+    .post-date {
+      font-size: 0.7em;
+      color: $mono-dark;
+    }
+  }
+}
