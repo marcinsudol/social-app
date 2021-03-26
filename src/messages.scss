@@ -4,19 +4,26 @@
   font-size: 1.6rem;
   height: 100%;
 
-  @include media-sm {
-    display: grid;
-    grid-template-columns: 24em 1fr;
-  }
-
-  #selector-wrapper {
-    overflow-y: auto;
-  }
-
+  #selector-wrapper,
   #conversation-wrapper {
     display: none;
     overflow-y: auto;
-    @include media-sm {
+  }
+
+  &.contacts-view #selector-wrapper {
+    display: block;
+  }
+
+  &.conversation-view #conversation-wrapper {
+    display: block;
+  }
+
+  @include media-sm {
+    display: grid;
+    grid-template-columns: 24em 1fr;
+
+    #selector-wrapper,
+    #conversation-wrapper {
       display: block;
     }
   }

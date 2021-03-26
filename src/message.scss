@@ -1,11 +1,15 @@
 @import "./variables-mixins.scss";
 
 .message {
+  margin-bottom: 1em;
   display: flex;
   flex-direction: row;
   width: auto;
-  max-width: 80%;
-  margin-bottom: 1em;
+
+  @include media-sm {
+    max-width: 80%;
+  }
+
   &.sent {
     margin-left: auto;
     justify-content: flex-end;

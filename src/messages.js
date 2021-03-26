@@ -6,8 +6,10 @@ import "./messages.scss";
 export default function Messages() {
   const { friendId } = useParams();
 
+  const view = friendId ? "conversation-view" : "contacts-view";
+
   return (
-    <div id="messages">
+    <div id="messages" className={view}>
       <div id="selector-wrapper">
         <FriendSelector />
       </div>
@@ -15,7 +17,7 @@ export default function Messages() {
         {friendId ? (
           <Conversation friendId={Number(friendId)} />
         ) : (
-          <p>Select conversation</p>
+          <p>Select contact to start conversation</p>
         )}
       </div>
     </div>
