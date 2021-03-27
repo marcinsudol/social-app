@@ -4,7 +4,8 @@ import Message from "./message";
 import { useFetchUser, useFetchMessages } from "./use-fetch";
 import { authContext } from "./auth";
 import "./conversation.scss";
-import { useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
+import ContentInput from "./content-input";
 
 export default function Conversation({ friendId }) {
   const [messages, setMessages] = useState(null);
@@ -12,7 +13,6 @@ export default function Conversation({ friendId }) {
   const [user, userError] = useFetchUser(auth.userId);
   const [friend, friendError] = useFetchUser(friendId);
   const [fetchedMessages, messagesError] = useFetchMessages(friendId);
-  const newMessageRef = useRef();
 
   useEffect(() => {
     setMessages(fetchedMessages);
@@ -20,22 +20,17 @@ export default function Conversation({ friendId }) {
 
   // send message - add to messages list
   const sendMessage = useCallback(
-    (e) => {
-      e.preventDefault();
-      const newMessageContent = newMessageRef.current.value.trim();
-      if (newMessageContent) {
-        // create new message object
-        const newMessage = {
-          id: new Date().getTime(),
-          userId: auth.userId,
-          friendId,
-          content: newMessageContent,
-          createdAt: new Date().toUTCString(),
-        };
-        newMessageRef.current.value = "";
-        const newMessages = [...messages, newMessage];
-        setMessages(newMessages);
-      }
+    (newMessageContent) => {
+      // create new message object
+      const newMessage = {
+        id: new Date().getTime(),
+        userId: auth.userId,
+        friendId,
+        content: newMessageContent,
+        createdAt: new Date().toUTCString(),
+      };
+      const newMessages = [...messages, newMessage];
+      setMessages(newMessages);
     },
     [auth, friendId, messages]
   );
@@ -62,10 +57,9 @@ export default function Conversation({ friendId }) {
                 </li>
               ))}
             </ol>
-            <form id="send-message-form" onSubmit={sendMessage}>
-              <input type="text" ref={newMessageRef} />
-              <button type="submit">Send</button>
-            </form>
+            <div id="new-message-form">
+              <ContentInput buttonLabel="Send" submit={sendMessage} />
+            </div>
           </div>
         ) : null}
       </LoadableComponent>
