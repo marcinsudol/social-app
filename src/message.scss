@@ -1,7 +1,6 @@
 @import "./variables-mixins.scss";
 
 .message {
-  margin-bottom: 1em;
   display: flex;
   flex-direction: row;
   width: auto;
@@ -26,17 +25,20 @@
     color: white;
     border-radius: 0.6em;
   }
-  &.sent .message-content {
-    background-color: $mono-light;
-    color: $color-dark;
-  }
 
   .message-date {
     font-size: 0.8em;
     color: $mono-dark;
   }
 
-  &.sent .message-date {
-    text-align: right;
+  &.sent {
+    .message-content {
+      background-color: $mono-light;
+      color: $color-dark;
+    }
+
+    .message-date {
+      text-align: right;
+    }
   }
 }

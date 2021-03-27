@@ -19,6 +19,7 @@
     margin-bottom: 0.6em;
     color: $color-dark;
   }
+
   input {
     width: 100%;
     height: 3em;
@@ -30,6 +31,7 @@
       box-shadow: 0 0 6px 3px $mono-medium;
     }
   }
+
   #login-button {
     display: flex;
     justify-content: center;
@@ -41,6 +43,7 @@
     border-radius: 0.4em;
     background-color: $color-dark;
     color: white;
+
     svg {
       font-size: 2em;
     }

@@ -11,6 +11,9 @@
 
   #messages-list {
     list-style: none;
+    li {
+      margin-bottom: 1.2em;
+    }
   }
 
   #new-message-form {

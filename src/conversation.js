@@ -4,7 +4,7 @@ import Message from "./message";
 import { useFetchUser, useFetchMessages } from "./use-fetch";
 import { authContext } from "./auth";
 import "./conversation.scss";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState, useMemo } from "react";
 import ContentInput from "./content-input";
 
 export default function Conversation({ friendId }) {
@@ -14,6 +14,7 @@ export default function Conversation({ friendId }) {
   const [friend, friendError] = useFetchUser(friendId);
   const [fetchedMessages, messagesError] = useFetchMessages(friendId);
 
+  // set messages after initial fetching
   useEffect(() => {
     setMessages(fetchedMessages);
   }, [fetchedMessages]);
@@ -23,7 +24,7 @@ export default function Conversation({ friendId }) {
     (newMessageContent) => {
       // create new message object
       const newMessage = {
-        id: new Date().getTime(),
+        id: Date.now(),
         userId: auth.userId,
         friendId,
         content: newMessageContent,
@@ -35,12 +36,18 @@ export default function Conversation({ friendId }) {
     [auth, friendId, messages]
   );
 
-  const loading =
-    (!user && !userError) ||
-    (!friend && !friendError) ||
-    (!messages && !messagesError);
+  const error = useMemo(
+    () =>
+      userError || friendError || messagesError ? "Error fetching data" : null,
+    [userError, friendError, messagesError]
+  );
 
-  const error = userError || friendError || messagesError;
+  const loading = useMemo(() => !user && !friend && !messages && !error, [
+    user,
+    friend,
+    messages,
+    error,
+  ]);
 
   return (
     <FullSizedComponent>
