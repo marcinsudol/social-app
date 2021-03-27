@@ -65,7 +65,7 @@ export default function Conversation({ friendId }) {
               ))}
             </ol>
             <div id="new-message-form">
-              <ContentInput buttonLabel="Send" submit={sendMessage} />
+              <ContentInput buttonLabel="Send" rows="2" submit={sendMessage} />
             </div>
           </div>
         ) : null}

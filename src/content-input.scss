@@ -4,13 +4,15 @@
   display: grid;
   grid-template-columns: 1fr auto;
 
-  input {
+  textarea {
     padding: 0.5em;
     border-radius: 0.5em;
     border: 1px solid $mono-medium;
+    resize: vertical;
   }
 
   button {
+    align-self: flex-end;
     margin-left: 0.6em;
     padding: 0.5em 1em;
     background-color: $color-light;
