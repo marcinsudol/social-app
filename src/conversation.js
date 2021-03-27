@@ -16,7 +16,9 @@ export default function Conversation({ friendId }) {
 
   // set messages after initial fetching
   useEffect(() => {
-    setMessages(fetchedMessages);
+    if (fetchedMessages) {
+      setMessages(fetchedMessages);
+    }
   }, [fetchedMessages]);
 
   // send message - add to messages list

@@ -1,6 +1,12 @@
 import { authContext } from "./auth";
 import { useCallback, useContext, useEffect, useState } from "react";
 
+const sortFromEarliest = (item1, item2) =>
+  new Date(item1.createdAt).getTime() - new Date(item2.createdAt).getTime();
+
+const sortFromLatest = (item1, item2) =>
+  new Date(item2.createdAt).getTime() - new Date(item1.createdAt).getTime();
+
 export function useFetchUser(userId) {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
@@ -52,11 +58,7 @@ export function useFetchMessages(friendId) {
           (message.userId === auth.userId && message.friendId === friendId) ||
           (message.userId === friendId && message.friendId === auth.userId)
       );
-      const sortedMessages = filteredMessages.sort(
-        (item1, item2) =>
-          new Date(item1.createdAt).getTime() -
-          new Date(item2.createdAt).getTime()
-      );
+      const sortedMessages = filteredMessages.sort(sortFromEarliest);
 
       setMessages(sortedMessages);
       setError(null);
@@ -78,12 +80,18 @@ export function useFetchPosts() {
   const [richPosts, setRichPosts] = useState(null);
   const [error, setError] = useState(null);
   const [posts, fetchPostsError, fetchPosts] = useFetchJson();
+  const [comments, fetchCommentsError, fetchComments] = useFetchJson();
   const [users, fetchUsersError, fetchUsers] = useFetchJson();
 
   // fetch posts
   useEffect(() => {
     fetchPosts("./data/posts.json");
   }, [fetchPosts]);
+
+  // fetch comments
+  useEffect(() => {
+    fetchComments("./data/comments.json");
+  }, [fetchComments]);
 
   // fetch users
   useEffect(() => {
@@ -92,25 +100,40 @@ export function useFetchPosts() {
 
   // sort posts and add user data
   useEffect(() => {
-    if (posts && users) {
-      const sortedPosts = posts.sort(
-        (item1, item2) =>
-          new Date(item2.createdAt).getTime() -
-          new Date(item1.createdAt).getTime()
-      );
+    if (posts && comments && users) {
+      // sort posts
+      const sortedPosts = posts.sort(sortFromLatest);
+
       sortedPosts.forEach((item) => {
-        item["user"] = users.find((user) => user.id === item.userId);
+        // add user data
+        item.user = users.find((user) => user.id === item.userId);
+
+        // filter comments related to post
+        const postComments = comments.filter(
+          (comment) => comment.postId === item.id
+        );
+        // sort comments
+        const sortedComments = postComments.sort(sortFromLatest);
+
+        // add user data to comments
+        sortedComments.forEach((item) => {
+          item.user = users.find((user) => user.id === item.userId);
+        });
+
+        // add comments to post
+        item.comments = sortedComments;
       });
+
       setRichPosts(sortedPosts);
     }
-  }, [posts, users]);
+  }, [posts, comments, users]);
 
   // fetch error
   useEffect(() => {
-    if (fetchPostsError || fetchUsersError) {
+    if (fetchPostsError || fetchCommentsError || fetchUsersError) {
       setError("Error while fetching the data");
     }
-  }, [fetchPostsError, fetchUsersError]);
+  }, [fetchPostsError, fetchCommentsError, fetchUsersError]);
 
   return [richPosts, error];
 }

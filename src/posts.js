@@ -16,7 +16,9 @@ export default function Posts() {
 
   // set posts after initial fetching
   useEffect(() => {
-    setPosts(fetchedPosts);
+    if (fetchedPosts) {
+      setPosts(fetchedPosts);
+    }
   }, [fetchedPosts]);
 
   // publish post - add to posts list
@@ -30,6 +32,7 @@ export default function Posts() {
           userId: auth.userId,
           user,
           createdAt: new Date().toUTCString(),
+          comments: [],
         };
         const newPosts = [newPost, ...posts];
         setPosts(newPosts);
