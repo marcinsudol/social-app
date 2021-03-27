@@ -11,8 +11,14 @@ export default function Post({ post }) {
 
   return (
     <div className="post">
-      <div className="post-avatar">
-        <Avatar user={post.user} fontSize="1.2em" />
+      <div className="post-header">
+        <div className="post-avatar">
+          <Avatar user={post.user} fontSize="1.2em" />
+        </div>
+        <h2 className="post-header-text">
+          <strong>{post.user.firstName + " " + post.user.lastName}</strong>{" "}
+          wrote
+        </h2>
       </div>
 
       <div className="post-body">
@@ -20,13 +26,16 @@ export default function Post({ post }) {
         <p className="post-content">{post.content}</p>
       </div>
 
-      <ol className="post-comments">
-        {post.comments.map((comment) => (
-          <li key={comment.id}>
-            <Comment comment={comment} />
-          </li>
-        ))}
-      </ol>
+      <div className="post-comments">
+        <h3 className="comments-header">Latest comments</h3>
+        <ol className="comments-list">
+          {post.comments.map((comment) => (
+            <li key={comment.id}>
+              <Comment comment={comment} />
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   );
 }

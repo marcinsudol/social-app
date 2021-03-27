@@ -1,0 +1,3 @@
+add
+status
+friends, comments, posts to every profile

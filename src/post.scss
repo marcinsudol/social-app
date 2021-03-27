@@ -1,20 +1,21 @@
 @import "./variables-mixins.scss";
 
 .post {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  border-radius: 1em;
-  overflow: hidden;
-
-  .post-avatar {
+  .post-header {
     padding: 0.8em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .post-header-text {
+      margin-left: 1em;
+      font-weight: normal;
+    }
   }
 
   .post-body {
     padding: 0.6em 1em;
-    border-left: 1px solid $mono-medium;
+    border-radius: 0 1em 1em;
     background-color: $mono-light;
-    margin-bottom: 1em;
 
     .post-date {
       font-size: 0.8em;
@@ -25,10 +26,18 @@
 
   .post-comments {
     font-size: 0.8em;
-    grid-column: 2;
-    list-style: none;
-    > li {
-      margin-bottom: 0.6em;
+
+    .comments-header {
+      margin: 0.4em 0.8em 0.4em 3em;
+      font-weight: normal;
+    }
+
+    .comments-list {
+      grid-column: 2;
+      list-style: none;
+      > li {
+        margin-bottom: 0.6em;
+      }
     }
   }
 }
