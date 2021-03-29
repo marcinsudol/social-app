@@ -1,24 +1,16 @@
 import Avatar from "./avatar";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import "./post.scss";
 import Comment from "./comment";
 import ContentStatistics from "./content-statistics";
 import ContentMenu from "./content-menu";
-import { useDisplayDate } from "./custom-hooks";
+import { useDisplayDate, useReactionsSummary } from "./custom-hooks";
 
 export default function Post({ post }) {
   const [reactions, setReactions] = useState(post.reactions);
   const [comments, setComments] = useState(post.comments);
+  const reactionsSummary = useReactionsSummary(reactions);
   const createdAt = useDisplayDate(post.createdAt);
-
-  const countReactions = useCallback(
-    (reactionType) =>
-      reactions.reduce(
-        (prev, reaction) => (reaction.type === reactionType ? prev + 1 : prev),
-        0
-      ),
-    [reactions]
-  );
 
   return (
     <div className="post">
@@ -35,16 +27,15 @@ export default function Post({ post }) {
       <div className="post-body">
         <p className="post-date">{createdAt}</p>
         <p className="post-content">{post.content}</p>
+
         <div className="post-statistics">
           <ContentStatistics
-            statsList={[
-              comments.length + " comments",
-              countReactions("like") + " likes",
-              countReactions("dislike") + " dislikes",
-            ]}
+            reactionsSummary={reactionsSummary}
+            commentsCount={comments.length}
             background="light"
           />
         </div>
+
         <div className="post-menu">
           <ContentMenu />
         </div>

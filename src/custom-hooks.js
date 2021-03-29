@@ -22,6 +22,41 @@ export function useDisplayDate(date) {
 }
 
 // -------------------------------------------------------------------------
+// reactions summary hook
+// -------------------------------------------------------------------------
+export function useReactionsSummary(reactions) {
+  const auth = useContext(authContext);
+  const [reactionsSummary, setReactionsSummary] = useState({
+    userReaction: "",
+    likes: 0,
+    dislikes: 0,
+  });
+
+  useEffect(() => {
+    if (reactions) {
+      const newSummary = {
+        userReaction: "",
+        likes: 0,
+        dislikes: 0,
+      };
+
+      reactions.forEach((reaction) => {
+        if (reaction.userId === auth.userId)
+          newSummary.userReaction = reaction.type;
+
+        if (reaction.type === "like") newSummary.likes = newSummary.likes + 1;
+        else if (reaction.type === "dislike")
+          newSummary.dislikes = newSummary.dislikes + 1;
+      });
+
+      setReactionsSummary(newSummary);
+    }
+  }, [reactions, auth]);
+
+  return reactionsSummary;
+}
+
+// -------------------------------------------------------------------------
 // fetch user data hook
 // -------------------------------------------------------------------------
 export function useFetchUser(userId) {

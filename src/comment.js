@@ -2,21 +2,13 @@ import Avatar from "./avatar";
 import ContentStatistics from "./content-statistics";
 import ContentMenu from "./content-menu";
 import "./comment.scss";
-import { useState, useCallback } from "react";
-import { useDisplayDate } from "./custom-hooks";
+import { useState } from "react";
+import { useDisplayDate, useReactionsSummary } from "./custom-hooks";
 
 export default function Comment({ comment }) {
   const [reactions, setReactions] = useState(comment.reactions);
+  const reactionsSummary = useReactionsSummary(reactions);
   const createdAt = useDisplayDate(comment.createdAt);
-
-  const countReactions = useCallback(
-    (reactionType) =>
-      reactions.reduce(
-        (prev, reaction) => (reaction.type === reactionType ? prev + 1 : prev),
-        0
-      ),
-    [reactions]
-  );
 
   return (
     <div className="comment">
@@ -26,15 +18,14 @@ export default function Comment({ comment }) {
       <div className="comment-body">
         <p className="comment-date">{createdAt}</p>
         <p className="comment-content">{comment.content}</p>
+
         <div className="comment-statistics">
           <ContentStatistics
-            statsList={[
-              countReactions("like") + " likes",
-              countReactions("dislike") + " dislikes",
-            ]}
+            reactionsSummary={reactionsSummary}
             background="dark"
           />
         </div>
+
         <div className="comment-menu">
           <ContentMenu />
         </div>
