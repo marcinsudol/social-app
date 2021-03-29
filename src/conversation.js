@@ -1,7 +1,7 @@
 import FullSizedComponent from "./full-sized-component";
 import LoadableComponent from "./loadable-component";
 import Message from "./message";
-import { useFetchUser, useFetchMessages } from "./use-fetch";
+import { useFetchUser, useFetchMessages } from "./custom-hooks";
 import { authContext } from "./auth";
 import "./conversation.scss";
 import { useCallback, useContext, useEffect, useState, useMemo } from "react";

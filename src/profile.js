@@ -2,7 +2,7 @@ import LoadableComponent from "./loadable-component";
 import FullSizedComponent from "./full-sized-component";
 import ProfileStatisticCard from "./profile-statistic-card";
 import Avatar from "./avatar";
-import { useFetchUser } from "./use-fetch";
+import { useFetchUser } from "./custom-hooks";
 import { authContext } from "./auth";
 import "./profile.scss";
 

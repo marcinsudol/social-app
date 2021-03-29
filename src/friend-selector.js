@@ -1,6 +1,6 @@
 import LoadableComponent from "./loadable-component";
 import Avatar from "./avatar";
-import { useFetchJson } from "./use-fetch";
+import { useFetchJson } from "./custom-hooks";
 import "./friend-selector.scss";
 
 import { useEffect } from "react";

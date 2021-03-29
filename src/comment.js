@@ -2,15 +2,12 @@ import Avatar from "./avatar";
 import ContentStatistics from "./content-statistics";
 import ContentMenu from "./content-menu";
 import "./comment.scss";
-import { useMemo, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
+import { useDisplayDate } from "./custom-hooks";
 
 export default function Comment({ comment }) {
   const [reactions, setReactions] = useState(comment.reactions);
-
-  const createdAt = useMemo(
-    () => new Date(comment.createdAt).toLocaleDateString("en-US"),
-    [comment]
-  );
+  const createdAt = useDisplayDate(comment.createdAt);
 
   const countReactions = useCallback(
     (reactionType) =>

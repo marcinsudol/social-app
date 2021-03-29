@@ -1,11 +1,25 @@
 import { authContext } from "./auth";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState, useMemo } from "react";
 
+// -------------------------------------------------------------------------
+// helper methods for sorting by date
+// -------------------------------------------------------------------------
 const sortFromEarliest = (item1, item2) =>
   new Date(item1.createdAt).getTime() - new Date(item2.createdAt).getTime();
 
 const sortFromLatest = (item1, item2) =>
   new Date(item2.createdAt).getTime() - new Date(item1.createdAt).getTime();
+
+// -------------------------------------------------------------------------
+// display date hook
+// -------------------------------------------------------------------------
+export function useDisplayDate(date) {
+  const displayDate = useMemo(
+    () => (date ? new Date(date).toLocaleDateString("en-US") : null),
+    [date]
+  );
+  return displayDate;
+}
 
 // -------------------------------------------------------------------------
 // fetch user data hook
@@ -182,7 +196,9 @@ export function useFetchPosts() {
   return [enrichedPosts, error];
 }
 
-// fetch json file
+// -------------------------------------------------------------------------
+// fetch json file hook
+// -------------------------------------------------------------------------
 export function useFetchJson() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);

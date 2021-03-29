@@ -1,15 +1,14 @@
 import Avatar from "./avatar";
 import { authContext } from "./auth";
 import "./message.scss";
-import { useContext, useMemo } from "react";
+import { useContext } from "react";
+import { useDisplayDate } from "./custom-hooks";
 
 export default function Message({ user, friend, message }) {
   const auth = useContext(authContext);
+  const createdAt = useDisplayDate(message.createdAt);
+
   const type = message.userId === auth.userId ? "sent" : "received";
-  const createdAt = useMemo(
-    () => new Date(message.createdAt).toLocaleDateString("en-US"),
-    [message]
-  );
 
   return (
     <div className={"message " + type}>

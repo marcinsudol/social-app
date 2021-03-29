@@ -1,4 +1,4 @@
-import { useFetchJson } from "./use-fetch";
+import { useFetchJson } from "./custom-hooks";
 import { useEffect } from "react";
 import FullSizedComponent from "./full-sized-component";
 import LoadableComponent from "./loadable-component";

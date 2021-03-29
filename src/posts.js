@@ -3,7 +3,7 @@ import FullSizedComponent from "./full-sized-component";
 import Post from "./post";
 import ContentInput from "./content-input";
 import { authContext } from "./auth";
-import { useFetchUser, useFetchPosts } from "./use-fetch";
+import { useFetchUser, useFetchPosts } from "./custom-hooks";
 import "./posts.scss";
 
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
