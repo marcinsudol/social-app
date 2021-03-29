@@ -1,0 +1,22 @@
+@import "./variables-mixins.scss";
+
+.content-menu {
+  button {
+    border: none;
+    border-radius: 0.4em;
+    padding: 0.2em 0.8em;
+    text-transform: uppercase;
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+
+  .like-button {
+    background-color: $color-medium;
+    color: white;
+  }
+  .dislike-button {
+    background-color: $mono-medium;
+    color: $color-dark;
+  }
+}

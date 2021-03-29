@@ -1,0 +1,21 @@
+@import "./variables-mixins.scss";
+
+.content-statistics {
+  list-style: none;
+
+  li {
+    display: inline-block;
+    border: none;
+    border-radius: 0.3em;
+    color: $color-dark;
+    text-decoration: underline;
+
+    &.background-dark {
+      color: white;
+    }
+
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}

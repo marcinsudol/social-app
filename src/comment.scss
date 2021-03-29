@@ -11,16 +11,25 @@
   .comment-body {
     justify-self: flex-start;
     background-color: $mono-dark;
-    border-radius: 0 0.8em 0.8em;
+    border-radius: 0 1em 1em;
     color: white;
-    padding: 0.8em;
+    padding: 1em;
+
+    .comment-date {
+      font-size: 0.8em;
+      margin-bottom: 0.6em;
+    }
 
     .comment-content {
       margin-bottom: 0.6em;
     }
 
-    .comment-date {
-      font-size: 0.8em;
+    .comment-statistics {
+      margin-bottom: 1em;
+    }
+
+    .comment-menu {
+      font-size: 1.1em;
     }
   }
 }

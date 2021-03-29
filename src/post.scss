@@ -13,7 +13,7 @@
   }
 
   .post-body {
-    padding: 0.6em 1em;
+    padding: 1em;
     border-radius: 0 1em 1em;
     background-color: $mono-light;
 
@@ -27,28 +27,9 @@
       margin-bottom: 0.4em;
     }
 
-    .post-footer {
-      font-size: 0.9em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      button {
-        border: none;
-        padding: 0.4em 0.8em;
-        border-radius: 0.4em;
-
-        &:not(:last-child) {
-          margin-right: 0.4em;
-        }
-      }
-      .like-button {
-        background-color: $color-light;
-        color: $color-dark;
-      }
-      .dislike-button {
-        background-color: $mono-medium;
-        color: $color-dark;
-      }
+    .post-statistics {
+      font-size: 0.8em;
+      margin-bottom: 1.4em;
     }
   }
 

@@ -2,6 +2,8 @@ import Avatar from "./avatar";
 import { useMemo, useState, useCallback } from "react";
 import "./post.scss";
 import Comment from "./comment";
+import ContentStatistics from "./content-statistics";
+import ContentMenu from "./content-menu";
 
 export default function Post({ post }) {
   const [reactions, setReactions] = useState(post.reactions);
@@ -36,26 +38,25 @@ export default function Post({ post }) {
       <div className="post-body">
         <p className="post-date">{createdAt}</p>
         <p className="post-content">{post.content}</p>
-        <div className="post-footer">
-          <div className="post-footer-buttons">
-            <button type="button" className="like-button">
-              Like
-            </button>
-            <button type="Dislike" className="dislike-button">
-              Dislike
-            </button>
-          </div>
-          <div className="post-footer-stats">
-            {"Likes: " +
-              countReactions("like") +
-              " Dislikes: " +
-              countReactions("dislike")}
-          </div>
+        <div className="post-statistics">
+          <ContentStatistics
+            statsList={[
+              comments.length + " comments",
+              countReactions("like") + " likes",
+              countReactions("dislike") + " dislikes",
+            ]}
+            background="light"
+          />
+        </div>
+        <div className="post-menu">
+          <ContentMenu />
         </div>
       </div>
 
       <div className="post-comments">
-        <h3 className="comments-header">Latest comments</h3>
+        <h3 className="comments-header">
+          {comments.length > 0 ? "Latest comments" : "No comments"}
+        </h3>
         <ol className="comments-list">
           {comments.map((comment) => (
             <li key={comment.id}>
