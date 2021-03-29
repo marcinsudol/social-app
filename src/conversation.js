@@ -21,7 +21,7 @@ export default function Conversation({ friendId }) {
     }
   }, [fetchedMessages]);
 
-  // send message - add to messages list
+  // send message - add new message to messages list
   const sendMessage = useCallback(
     (newMessageContent) => {
       // create new message object

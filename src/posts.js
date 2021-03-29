@@ -21,7 +21,7 @@ export default function Posts() {
     }
   }, [fetchedPosts]);
 
-  // publish post - add to posts list
+  // publish post - add new post to posts list
   const publishPost = useCallback(
     (newPostContent) => {
       if (posts && user) {
@@ -32,6 +32,7 @@ export default function Posts() {
           userId: auth.userId,
           user,
           createdAt: new Date().toUTCString(),
+          reactions: [],
           comments: [],
         };
         const newPosts = [newPost, ...posts];

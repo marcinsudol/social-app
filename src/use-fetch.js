@@ -7,6 +7,9 @@ const sortFromEarliest = (item1, item2) =>
 const sortFromLatest = (item1, item2) =>
   new Date(item2.createdAt).getTime() - new Date(item1.createdAt).getTime();
 
+// -------------------------------------------------------------------------
+// fetch user data hook
+// -------------------------------------------------------------------------
 export function useFetchUser(userId) {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
@@ -39,6 +42,9 @@ export function useFetchUser(userId) {
   return [user, error];
 }
 
+// -------------------------------------------------------------------------
+// fetch messages hook
+// -------------------------------------------------------------------------
 export function useFetchMessages(friendId) {
   const [messages, setMessages] = useState(null);
   const [error, setError] = useState(null);
@@ -65,7 +71,7 @@ export function useFetchMessages(friendId) {
     }
   }, [auth, friendId, allMessages]);
 
-  // fetch error
+  // set fetch error
   useEffect(() => {
     if (fetchError) {
       setError("Error while fetching the data");
@@ -75,67 +81,105 @@ export function useFetchMessages(friendId) {
   return [messages, error];
 }
 
-// fetch posts
+// -------------------------------------------------------------------------
+// fetch posts hook
+// -------------------------------------------------------------------------
 export function useFetchPosts() {
-  const [richPosts, setRichPosts] = useState(null);
-  const [error, setError] = useState(null);
   const [posts, fetchPostsError, fetchPosts] = useFetchJson();
   const [comments, fetchCommentsError, fetchComments] = useFetchJson();
+  const [
+    postReactions,
+    fetchPostReactionsError,
+    fetchPostReactions,
+  ] = useFetchJson();
+  const [
+    commentReactions,
+    fetchCommentReactionsError,
+    fetchCommentReactions,
+  ] = useFetchJson();
   const [users, fetchUsersError, fetchUsers] = useFetchJson();
+  const [enrichedPosts, setEnrichedPosts] = useState(null);
+  const [error, setError] = useState(null);
 
-  // fetch posts
+  // fetch all data from separate files
   useEffect(() => {
     fetchPosts("./data/posts.json");
   }, [fetchPosts]);
 
-  // fetch comments
   useEffect(() => {
     fetchComments("./data/comments.json");
   }, [fetchComments]);
 
-  // fetch users
+  useEffect(() => {
+    fetchPostReactions("./data/post-reactions.json");
+  }, [fetchPostReactions]);
+
+  useEffect(() => {
+    fetchCommentReactions("./data/comment-reactions.json");
+  }, [fetchCommentReactions]);
+
   useEffect(() => {
     fetchUsers("./data/users.json");
   }, [fetchUsers]);
 
-  // sort posts and add user data
+  // combine all data into enriched posts
   useEffect(() => {
-    if (posts && comments && users) {
+    if (posts && comments && postReactions && commentReactions && users) {
       // sort posts
       const sortedPosts = posts.sort(sortFromLatest);
 
-      sortedPosts.forEach((item) => {
+      sortedPosts.forEach((post) => {
         // add user data
-        item.user = users.find((user) => user.id === item.userId);
+        post.user = users.find((user) => user.id === post.userId);
+
+        // add reactions to post
+        post.reactions = postReactions.filter(
+          (reaction) => reaction.postId === post.id
+        );
 
         // filter comments related to post
         const postComments = comments.filter(
-          (comment) => comment.postId === item.id
+          (comment) => comment.postId === post.id
         );
         // sort comments
         const sortedComments = postComments.sort(sortFromLatest);
 
-        // add user data to comments
-        sortedComments.forEach((item) => {
-          item.user = users.find((user) => user.id === item.userId);
+        // add user data and reactions to comments
+        sortedComments.forEach((comment) => {
+          comment.user = users.find((user) => user.id === comment.userId);
+          comment.reactions = commentReactions.filter(
+            (reaction) => reaction.commentId === comment.id
+          );
         });
 
         // add comments to post
-        item.comments = sortedComments;
+        post.comments = sortedComments;
       });
 
-      setRichPosts(sortedPosts);
+      setEnrichedPosts(sortedPosts);
     }
-  }, [posts, comments, users]);
+  }, [posts, comments, postReactions, commentReactions, users]);
 
-  // fetch error
+  // set fetch error
   useEffect(() => {
-    if (fetchPostsError || fetchCommentsError || fetchUsersError) {
+    if (
+      fetchPostsError ||
+      fetchCommentsError ||
+      fetchPostReactionsError ||
+      fetchCommentReactionsError ||
+      fetchUsersError
+    ) {
       setError("Error while fetching the data");
     }
-  }, [fetchPostsError, fetchCommentsError, fetchUsersError]);
+  }, [
+    fetchPostsError,
+    fetchCommentsError,
+    fetchPostReactionsError,
+    fetchCommentReactionsError,
+    fetchUsersError,
+  ]);
 
-  return [richPosts, error];
+  return [enrichedPosts, error];
 }
 
 // fetch json file
