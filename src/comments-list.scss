@@ -1,0 +1,24 @@
+@import "./variables-mixins.scss";
+
+.comments-menu {
+  margin: 1em 0 0.6em 3em;
+  .new-comment-button {
+    padding: 0.6em 2em;
+    border-radius: 0.6em;
+    border: none;
+    background-color: $color-medium;
+    color: white;
+  }
+}
+
+.comments-header {
+  margin: 0.4em 0 0.4em 3em;
+  font-weight: normal;
+}
+
+.comments-list {
+  list-style: none;
+  > li {
+    margin-bottom: 0.6em;
+  }
+}

@@ -1,11 +1,11 @@
 import Avatar from "./avatar";
 import { useCallback, useContext, useState } from "react";
 import "./post.scss";
-import Comment from "./comment";
 import ContentStatistics from "./content-statistics";
 import ContentMenu from "./content-menu";
 import { useDisplayDate, useReactionsSummary } from "./custom-hooks";
 import { authContext } from "./auth";
+import CommentsList from "./comments-list";
 
 export default function Post({ post }) {
   const [reactions, setReactions] = useState(post.reactions);
@@ -39,10 +39,32 @@ export default function Post({ post }) {
         // add reaction to list
         newReactions.push(newReaction);
 
+        // update reactions
         setReactions(newReactions);
       }
     },
     [post, reactions, reactionsSummary, auth]
+  );
+
+  const addComment = useCallback(
+    (content) => {
+      // create new comment
+      const newComment = {
+        id: Date.now(),
+        content: content,
+        createdAt: new Date().toUTCString(),
+        postId: post.id,
+        userId: auth.userId,
+        user: { ...auth.user },
+      };
+
+      // create new comments
+      const newComments = [newComment, ...comments];
+
+      // update comments
+      setComments(newComments);
+    },
+    [post, comments, auth]
   );
 
   return (
@@ -75,16 +97,7 @@ export default function Post({ post }) {
       </div>
 
       <div className="post-comments">
-        <h3 className="comments-header">
-          {comments.length > 0 ? "Latest comments" : "No comments"}
-        </h3>
-        <ol className="comments-list">
-          {comments.map((comment) => (
-            <li key={comment.id}>
-              <Comment comment={comment} />
-            </li>
-          ))}
-        </ol>
+        <CommentsList comments={comments} addComment={addComment} />
       </div>
     </div>
   );

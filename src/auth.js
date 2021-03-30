@@ -1,11 +1,13 @@
 import { createContext, useMemo, useState } from "react";
+import { useFetchUser } from "./custom-hooks";
 
 export const authContext = createContext();
 
 export const useAuth = () => {
   const [userId, setUserId] = useState(false);
+  const [user, error] = useFetchUser(userId);
 
-  let logged = useMemo(() => !!userId, [userId]);
+  const logged = useMemo(() => !!userId, [userId]);
 
   const login = (userId) => {
     setTimeout(() => {
@@ -19,5 +21,5 @@ export const useAuth = () => {
     }, 500);
   };
 
-  return [userId, logged, login, logout];
+  return [userId, user, logged, login, logout];
 };

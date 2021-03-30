@@ -35,18 +35,5 @@
 
   .post-comments {
     font-size: 0.8em;
-
-    .comments-header {
-      margin: 0.4em 0.8em 0.4em 3em;
-      font-weight: normal;
-    }
-
-    .comments-list {
-      grid-column: 2;
-      list-style: none;
-      > li {
-        margin-bottom: 0.6em;
-      }
-    }
   }
 }

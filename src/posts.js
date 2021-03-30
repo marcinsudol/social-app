@@ -30,7 +30,7 @@ export default function Posts() {
           id: Date.now(),
           content: newPostContent,
           userId: auth.userId,
-          user,
+          user: { ...user },
           createdAt: new Date().toUTCString(),
           reactions: [],
           comments: [],

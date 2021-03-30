@@ -13,10 +13,10 @@ import {
 } from "react-router-dom";
 
 export default function App() {
-  const [userId, logged, login, logout] = useAuth();
+  const [userId, user, logged, login, logout] = useAuth();
 
   return (
-    <authContext.Provider value={{ userId, logged, login, logout }}>
+    <authContext.Provider value={{ userId, user, logged, login, logout }}>
       <Router>
         <Switch>
           {logged ? (
