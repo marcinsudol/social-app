@@ -23,6 +23,7 @@ export default function Comment({ comment }) {
           <ContentStatistics
             reactionsSummary={reactionsSummary}
             background="dark"
+            parentType="comment"
           />
         </div>
 

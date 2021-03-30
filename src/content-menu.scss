@@ -2,21 +2,28 @@
 
 .content-menu {
   button {
-    border: none;
-    border-radius: 0.4em;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     padding: 0.4em 1em;
+    border-radius: 0.4em;
+    border: 1px solid $mono-dark;
+    background-color: $mono-light;
+    color: $color-dark;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-medium;
+      border-color: $color-medium;
+    }
+
+    svg {
+      margin-right: 0.4em;
+    }
 
     &:not(:last-child) {
       margin-right: 1em;
     }
-  }
-
-  .like-button {
-    background-color: $color-medium;
-    color: white;
-  }
-  .dislike-button {
-    background-color: $mono-medium;
-    color: $color-dark;
   }
 }

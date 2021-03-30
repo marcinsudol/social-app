@@ -1,24 +1,39 @@
 @import "./variables-mixins.scss";
 
 .content-statistics {
-  list-style: none;
+  color: $color-dark;
+  &.background-dark {
+    color: white;
+  }
 
-  li {
-    display: inline-block;
-    border: none;
-    border-radius: 0.3em;
-    color: $color-dark;
+  .content-statistics-list {
+    list-style: none;
+    margin-bottom: 1em;
 
-    &:not(:last-child) {
-      margin-right: 1em;
-    }
+    li {
+      display: inline-block;
+      border: none;
+      border-radius: 0.3em;
 
-    strong {
-      color: $color-medium;
+      &:not(:last-child) {
+        margin-right: 1em;
+      }
+
+      strong {
+        color: $color-medium;
+      }
     }
   }
 
-  &.background-dark li {
-    color: white;
+  .reaction-notification {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    color: $color-medium;
+
+    svg {
+      margin-right: 0.4em;
+    }
   }
 }

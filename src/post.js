@@ -32,7 +32,7 @@ export default function Post({ post }) {
           <ContentStatistics
             reactionsSummary={reactionsSummary}
             commentsCount={comments.length}
-            background="light"
+            parentType="post"
           />
         </div>
 
