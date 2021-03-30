@@ -5,7 +5,6 @@ import { useState } from "react";
 
 export default function CommentsList({ comments, addComment }) {
   const [inputVisible, setInputVisible] = useState(false);
-
   return (
     <div>
       <div className="comments-menu">
@@ -17,6 +16,7 @@ export default function CommentsList({ comments, addComment }) {
               addComment(content);
               setInputVisible(false);
             }}
+            setFocus={true}
           />
         ) : (
           <button

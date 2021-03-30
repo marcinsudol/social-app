@@ -1,9 +1,10 @@
 import "./content-input.scss";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
-export default function ContentInput({ buttonLabel, rows, submit }) {
+export default function ContentInput({ buttonLabel, rows, submit, setFocus }) {
   const inputRef = useRef();
+
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -16,6 +17,12 @@ export default function ContentInput({ buttonLabel, rows, submit }) {
     },
     [submit]
   );
+
+  useEffect(() => {
+    if (setFocus) {
+      inputRef.current.focus();
+    }
+  }, [setFocus]);
 
   return (
     <form className="input-form" onSubmit={onSubmit}>

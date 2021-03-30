@@ -61,7 +61,7 @@ export default function Comment({ comment }) {
         </div>
 
         <div className="comment-menu">
-          <ContentMenu addReaction={addReaction} />
+          <ContentMenu addReaction={addReaction} background="dark" />
         </div>
       </div>
     </div>

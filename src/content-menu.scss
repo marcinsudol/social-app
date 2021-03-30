@@ -8,11 +8,26 @@
     align-items: center;
     padding: 0.4em 1em;
     border-radius: 0.4em;
-    border: 1px solid $mono-dark;
-    background-color: $mono-light;
+    border: 1px solid $color-dark;
     color: $color-dark;
+    background-color: transparent;
     transition: all 0.3s;
 
+    svg {
+      margin-right: 0.4em;
+    }
+
+    &:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+
+  &.background-dark button {
+    border: 1px solid white;
+    color: white;
+  }
+
+  button {
     &:hover {
       color: $color-medium;
       border-color: $color-medium;
@@ -21,14 +36,6 @@
     &:active {
       background-color: $color-medium;
       color: white;
-    }
-
-    svg {
-      margin-right: 0.4em;
-    }
-
-    &:not(:last-child) {
-      margin-right: 1em;
     }
   }
 }

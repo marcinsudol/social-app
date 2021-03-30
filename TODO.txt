@@ -1,3 +1,3 @@
 add
-status
+button go to profile
 friends, comments, posts statistics to every profile

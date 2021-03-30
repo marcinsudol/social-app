@@ -56,6 +56,7 @@ export default function Post({ post }) {
         postId: post.id,
         userId: auth.userId,
         user: { ...auth.user },
+        reactions: [],
       };
 
       // create new comments
@@ -74,8 +75,7 @@ export default function Post({ post }) {
           <Avatar user={post.user} fontSize="1.2em" />
         </div>
         <h2 className="post-header-text">
-          <strong>{post.user.firstName + " " + post.user.lastName}</strong>{" "}
-          wrote
+          {post.user.firstName + " " + post.user.lastName}
         </h2>
       </div>
 

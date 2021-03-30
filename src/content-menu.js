@@ -4,9 +4,13 @@ import {
   IoHeartDislike as DislikeIcon,
 } from "react-icons/io5";
 
-export default function ContentMenu({ addReaction }) {
+export default function ContentMenu({ addReaction, background }) {
   return (
-    <div className="content-menu">
+    <div
+      className={
+        "content-menu" + (background ? " background-" + background : "")
+      }
+    >
       <button
         type="button"
         className="like-button"
