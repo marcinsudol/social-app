@@ -4,7 +4,7 @@ import "./message.scss";
 import { useContext } from "react";
 import { useDisplayDate } from "./custom-hooks";
 
-export default function Message({ user, friend, message }) {
+export default function Message({ friend, message }) {
   const auth = useContext(authContext);
   const createdAt = useDisplayDate(message.createdAt);
 

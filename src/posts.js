@@ -3,7 +3,7 @@ import FullSizedComponent from "./full-sized-component";
 import Post from "./post";
 import ContentInput from "./content-input";
 import { authContext } from "./auth";
-import { useFetchUser, useFetchPosts } from "./custom-hooks";
+import { useFetchPosts } from "./custom-hooks";
 import "./posts.scss";
 
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
@@ -11,7 +11,6 @@ import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 export default function Posts() {
   const [posts, setPosts] = useState(null);
   const auth = useContext(authContext);
-  const [user, userError] = useFetchUser(auth.userId);
   const [fetchedPosts, postsError] = useFetchPosts();
 
   // set posts after initial fetching
@@ -24,13 +23,13 @@ export default function Posts() {
   // publish post - add new post to posts list
   const publishPost = useCallback(
     (newPostContent) => {
-      if (posts && user) {
+      if (posts && auth.user) {
         // create new post object
         const newPost = {
           id: Date.now(),
           content: newPostContent,
           userId: auth.userId,
-          user: { ...user },
+          user: { ...auth.user },
           createdAt: new Date().toUTCString(),
           reactions: [],
           comments: [],
@@ -39,13 +38,12 @@ export default function Posts() {
         setPosts(newPosts);
       }
     },
-    [auth, user, posts]
+    [auth, posts]
   );
 
-  const error = useMemo(
-    () => (userError || postsError ? "Error fetching data" : null),
-    [userError, postsError]
-  );
+  const error = useMemo(() => (postsError ? "Error fetching data" : null), [
+    postsError,
+  ]);
 
   return (
     <FullSizedComponent>

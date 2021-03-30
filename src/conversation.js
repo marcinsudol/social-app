@@ -10,7 +10,6 @@ import ContentInput from "./content-input";
 export default function Conversation({ friendId }) {
   const [messages, setMessages] = useState(null);
   const auth = useContext(authContext);
-  const [user, userError] = useFetchUser(auth.userId);
   const [friend, friendError] = useFetchUser(friendId);
   const [fetchedMessages, messagesError] = useFetchMessages(friendId);
 
@@ -39,13 +38,11 @@ export default function Conversation({ friendId }) {
   );
 
   const error = useMemo(
-    () =>
-      userError || friendError || messagesError ? "Error fetching data" : null,
-    [userError, friendError, messagesError]
+    () => (friendError || messagesError ? "Error fetching data" : null),
+    [friendError, messagesError]
   );
 
-  const loading = useMemo(() => !user && !friend && !messages && !error, [
-    user,
+  const loading = useMemo(() => !friend && !messages && !error, [
     friend,
     messages,
     error,
@@ -62,7 +59,7 @@ export default function Conversation({ friendId }) {
             <ol id="messages-list">
               {messages.map((message) => (
                 <li key={message.id}>
-                  <Message user={user} friend={friend} message={message} />
+                  <Message friend={friend} message={message} />
                 </li>
               ))}
             </ol>

@@ -12,6 +12,7 @@ import { Switch, Redirect, Route, useRouteMatch } from "react-router-dom";
 export default function AppContent() {
   const match = useRouteMatch();
   const auth = useContext(authContext);
+
   return (
     <Switch>
       <Route path={`${match.path}/posts`}>
