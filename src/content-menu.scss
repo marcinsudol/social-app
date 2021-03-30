@@ -18,6 +18,11 @@
       border-color: $color-medium;
     }
 
+    &:active {
+      background-color: $color-medium;
+      color: white;
+    }
+
     svg {
       margin-right: 0.4em;
     }
