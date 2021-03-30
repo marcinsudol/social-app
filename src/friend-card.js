@@ -7,7 +7,7 @@ export default function FriendCard({ user }) {
     <Link to={`/app/friends/${user.id}`}>
       <div className="friend-card">
         <div className="friend-avatar">
-          <Avatar user={user} fontSize={"2em"} />
+          <Avatar user={user} fontSize={"2em"} displayStatus={true} />
         </div>
 
         <div className="friend-info">
