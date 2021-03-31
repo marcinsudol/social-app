@@ -2,7 +2,7 @@
 
 #login-page {
   min-height: 100vh;
-  background-image: url("./assets/marek-piwnicki-jIlMBLqvnL8-unsplash.jpg");
+  background-image: url("./assets/marek-piwnicki-LGgKrtjNsoI-unsplash.jpg");
   background-position: center;
   background-size: cover;
   display: grid;
@@ -14,12 +14,40 @@
 
   header {
     align-self: flex-start;
-    font-size: 2.2em;
-    margin: 0.4em;
+    margin: 1em 1.3em;
     font-weight: bold;
     color: $color-dark;
-    @include media-sm {
-      font-size: 3em;
+
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 0.2em;
+      @include media-sm {
+        margin-bottom: 0.6em;
+        font-size: 3em;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-weight: normal;
+      font-size: 0.8em;
+      @include media-sm {
+        font-size: 0.9em;
+      }
+
+      li {
+        display: inline-block;
+        color: $color-dark;
+        @include media-sm {
+          padding: 0.4em 1em;
+          background-color: $color-dark;
+          color: white;
+          border-radius: 0.6em;
+          margin-bottom: 1.4em;
+        }
+      }
     }
   }
 

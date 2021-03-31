@@ -4,17 +4,36 @@ import LoginForm from "./login-form";
 export default function LoginPage() {
   return (
     <div id="login-page">
-      <header>Social App</header>
+      <header>
+        <h1>Social App</h1>
+        <ul>
+          <li>Only Front-End part of the page</li>
+          <li>Mockup data fetched from json files</li>
+          <li>
+            Press <strong>Log in</strong> to start
+          </li>
+        </ul>
+      </header>
+
       <div id="login-form-container">
         <LoginForm />
       </div>
+
       <footer>
         Photo by{" "}
-        <a href="https://unsplash.com/@marekpiwnicki?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+        <a
+          href="https://unsplash.com/@marekpiwnicki?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          target="_blank"
+          rel="noreferrer"
+        >
           Marek Piwnicki
         </a>{" "}
         on{" "}
-        <a href="/t/textures-patterns?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+        <a
+          href="https://unsplash.com/@marekpiwnicki?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          target="_blank"
+          rel="noreferrer"
+        >
           Unsplash
         </a>
       </footer>
