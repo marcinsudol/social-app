@@ -8,7 +8,6 @@
 
   .content-statistics-list {
     list-style: none;
-    margin-bottom: 1em;
 
     li {
       display: inline-block;
@@ -31,6 +30,7 @@
     justify-content: flex-start;
     align-items: center;
     color: $color-medium;
+    margin-top: 1em;
 
     svg {
       margin-right: 0.4em;

@@ -18,30 +18,32 @@ export default function Profile({ userId }) {
     <FullSizedComponent>
       <LoadableComponent loading={!user && !error} error={error}>
         {user ? (
-          <div id="profile">
-            <div id="profile-avatar">
-              <Avatar user={user} fontSize={"5em"} />
-            </div>
-            <div>
-              <div id="profile-header">
-                <h1 className="display-name">
-                  {user.firstName + " " + user.lastName}
-                </h1>
-                <p>{user.info}</p>
+          <div id="profile-wrapper">
+            <div id="profile">
+              <div id="profile-avatar">
+                <Avatar user={user} fontSize={"5em"} />
               </div>
-              <div id="profile-statistics">
-                <ProfileStatisticCard label={"Friends"} value={136} />
-                <ProfileStatisticCard label={"Posts"} value={342} />
-                <ProfileStatisticCard label={"Comments"} value={752} />
+              <div>
+                <div id="profile-header">
+                  <h1 className="display-name">
+                    {user.firstName + " " + user.lastName}
+                  </h1>
+                  <p>{user.info}</p>
+                </div>
+                <div id="profile-statistics">
+                  <ProfileStatisticCard label={"Friends"} value={136} />
+                  <ProfileStatisticCard label={"Posts"} value={342} />
+                  <ProfileStatisticCard label={"Comments"} value={752} />
+                </div>
+                {!profileOwner && (
+                  <Link
+                    id="open-conversation-button"
+                    to={`/app/messages/${userId}`}
+                  >
+                    Open conversation
+                  </Link>
+                )}
               </div>
-              {!profileOwner && (
-                <Link
-                  id="open-conversation-button"
-                  to={`/app/messages/${userId}`}
-                >
-                  Open conversation
-                </Link>
-              )}
             </div>
           </div>
         ) : null}

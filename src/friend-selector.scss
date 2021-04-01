@@ -2,26 +2,20 @@
 
 #friend-selector {
   padding: 0.8em;
-  background-color: $mono-light;
-  border-right: 1px solid $mono-medium;
+  background-color: white;
 
   a {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0.6em;
+    padding: 1em 1.2em;
     &:not(:last-child) {
-      border-bottom: 1px solid $mono-medium;
+      border-bottom: 1px solid $mono-light2;
     }
 
     .friend-name {
       margin-left: 1em;
       margin-right: auto;
-    }
-
-    svg {
-      font-size: 2.6em;
-      color: $color-medium;
     }
   }
 }

@@ -48,19 +48,21 @@ export default function Posts() {
   return (
     <FullSizedComponent>
       <LoadableComponent loading={!posts && !error} error={error}>
-        <div id="posts">
-          <div id="new-post-form">
-            <ContentInput buttonLabel="Publish" submit={publishPost} />
+        <div id="posts-wrapper">
+          <div id="posts">
+            <div id="new-post-form">
+              <ContentInput buttonLabel="Publish" submit={publishPost} />
+            </div>
+            <ol id="posts-list">
+              {posts
+                ? posts.map((post) => (
+                    <li key={post.id}>
+                      <Post post={post} />
+                    </li>
+                  ))
+                : null}
+            </ol>
           </div>
-          <ol id="posts-list">
-            {posts
-              ? posts.map((post) => (
-                  <li key={post.id}>
-                    <Post post={post} />
-                  </li>
-                ))
-              : null}
-          </ol>
         </div>
       </LoadableComponent>
     </FullSizedComponent>

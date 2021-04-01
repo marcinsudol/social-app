@@ -3,6 +3,7 @@
 .comment {
   display: grid;
   grid-template-columns: auto 1fr;
+  margin-bottom: 2em;
 
   .comment-avatar {
     padding: 0.6em;
@@ -10,26 +11,23 @@
 
   .comment-body {
     justify-self: flex-start;
-    background-color: $mono-dark;
+    background-color: $mono-light;
     border-radius: 0 1em 1em;
-    color: white;
-    padding: 1em;
+    padding: 1em 1.4em;
 
     .comment-date {
       font-size: 0.8em;
       margin-bottom: 0.6em;
     }
+  }
 
-    .comment-content {
-      margin-bottom: 1em;
-    }
+  .comment-statistics {
+    grid-column: 2;
+    margin: 1em 0;
+  }
 
-    .comment-statistics {
-      margin-bottom: 1.2em;
-    }
-
-    .comment-menu {
-      font-size: 1.1em;
-    }
+  .comment-menu {
+    grid-column: 2;
+    font-size: 1.1em;
   }
 }

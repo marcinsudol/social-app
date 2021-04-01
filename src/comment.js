@@ -51,18 +51,17 @@ export default function Comment({ comment }) {
       <div className="comment-body">
         <p className="comment-date">{createdAt}</p>
         <p className="comment-content">{comment.content}</p>
+      </div>
 
-        <div className="comment-statistics">
-          <ContentStatistics
-            reactionsSummary={reactionsSummary}
-            background="dark"
-            parentType="comment"
-          />
-        </div>
+      <div className="comment-statistics">
+        <ContentStatistics
+          reactionsSummary={reactionsSummary}
+          parentType="comment"
+        />
+      </div>
 
-        <div className="comment-menu">
-          <ContentMenu addReaction={addReaction} background="dark" />
-        </div>
+      <div className="comment-menu">
+        <ContentMenu addReaction={addReaction} />
       </div>
     </div>
   );

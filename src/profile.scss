@@ -1,48 +1,56 @@
 @import "./variables-mixins.scss";
 
-#profile {
-  @include media-sm {
-    display: grid;
-    grid-template-columns: auto 1fr;
-  }
+#profile-wrapper {
+  background-color: $mono-light;
 
-  #profile-avatar {
-    margin: 4em 1em 2em 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  #profile {
+    max-width: 70em;
+    margin: auto;
+    margin-top: 2em;
+
     @include media-sm {
-      margin: 2em 1em;
-      align-self: flex-start;
+      display: grid;
+      grid-template-columns: auto 1fr;
     }
-  }
 
-  #profile-header {
-    margin: 1em;
-    padding: 1em;
-    background-color: $mono-light;
-    border-radius: 0.6em;
-
-    .display-name {
-      font-size: 1.6em;
-      color: $color-medium;
+    #profile-avatar {
+      margin: 4em 1em 2em 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include media-sm {
+        margin: 2em 1em;
+        align-self: flex-start;
+      }
     }
-  }
 
-  #profile-statistics {
-    margin: 1em;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
-    gap: 1em;
-  }
+    #profile-header {
+      margin: 1em;
+      padding: 1em;
+      background-color: white;
+      border-radius: 0.6em;
 
-  #open-conversation-button {
-    display: block;
-    margin: 1em;
-    padding: 0.6em;
-    border-radius: 0.6em;
-    background-color: $color-medium;
-    color: white;
-    text-align: center;
+      .display-name {
+        font-size: 1.6em;
+        color: $color-medium;
+      }
+    }
+
+    #profile-statistics {
+      margin: 1em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+      gap: 1em;
+    }
+
+    #open-conversation-button {
+      display: block;
+      margin: 1em;
+      padding: 0.6em;
+      border-radius: 0.6em;
+      background-color: $color-medium;
+      color: white;
+      text-align: center;
+    }
   }
 }

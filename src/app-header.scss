@@ -2,9 +2,10 @@
 
 #app-header {
   height: 3.4em;
-  background-color: $mono-light;
+  background-color: $color-dark;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  z-index: 10;
 
   @include media-sm {
     height: 4em;
@@ -19,7 +20,9 @@
     align-items: center;
     background: none;
     border: none;
+    color: white;
     transition: background-color border-top 0.5s;
+
     svg {
       font-size: 1.6em;
       @include media-sm {
@@ -36,10 +39,7 @@
   }
 
   .active {
-    background-color: white;
-    border-top: 4px solid white;
-    border-bottom: 4px solid $color-dark;
-    color: $color-medium;
+    background-color: $color-medium;
   }
 
   #logout-button {

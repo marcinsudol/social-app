@@ -15,8 +15,13 @@
     align-self: flex-end;
     margin-left: 0.6em;
     padding: 0.5em 1em;
-    background-color: $color-light;
+    background-color: $color-medium;
+    color: white;
     border-radius: 0.5em;
     border: none;
+    transition: all 0.4s;
+    &:active {
+      background-color: $color-medium;
+    }
   }
 }

@@ -2,11 +2,14 @@
 
 #conversation {
   padding: 1em;
+  background-color: $mono-light;
 
   h1 {
     font-size: 2em;
-    margin-bottom: 0.4em;
-    color: $mono-medium;
+    padding: 0.4em 0;
+    margin-bottom: 1em;
+    color: $color-medium;
+    border-bottom: 1px solid $mono-medium2;
   }
 
   #messages-list {

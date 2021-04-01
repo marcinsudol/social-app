@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     font-size: 2em;
+    background-color: $mono-light;
     color: $mono-medium;
     text-align: center;
   }
@@ -28,7 +29,7 @@
 
   @include media-sm {
     display: grid;
-    grid-template-columns: 24em 1fr;
+    grid-template-columns: 20em 1fr;
 
     #selector-wrapper,
     #conversation-wrapper {

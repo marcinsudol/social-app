@@ -2,16 +2,17 @@
 
 #friends-list {
   padding: 1em;
+  background-color: $mono-light;
 
   h1 {
     font-size: 2em;
-    margin-bottom: 0.4em;
-    color: $mono-medium;
+    margin-bottom: 0.5em;
+    color: $color-medium;
   }
 
   #friends-cards {
     display: grid;
-    gap: 1em;
+    gap: 0.4em;
     grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
   }
 }

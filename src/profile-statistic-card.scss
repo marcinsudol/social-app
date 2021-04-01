@@ -3,8 +3,13 @@
 .profile-statistic-card {
   padding: 0.6em;
   border-radius: 0.6em;
+  background-color: white;
 
   .card-label {
-    color: $color-dark;
+    color: $color-medium;
+  }
+
+  .card-value {
+    font-size: 1.4em;
   }
 }

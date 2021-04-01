@@ -1,25 +1,27 @@
 @import "./variables-mixins.scss";
 
-#posts {
-  padding: 1em;
-  margin: auto;
+#posts-wrapper {
+  background-color: $mono-light;
 
-  @include media-sm {
-    padding: 3em;
-  }
+  #posts {
+    background-color: white;
+    max-width: 70em;
+    margin: auto;
+    padding: 1em;
+    @include media-sm {
+      padding: 3em;
+    }
 
-  #new-post-form {
-    margin-bottom: 2em;
-    width: 100%;
-    max-width: 60em;
-  }
+    #new-post-form {
+      @include media-sm {
+        margin: 2em 0;
+      }
+      width: 100%;
+    }
 
-  #posts-list {
-    width: 100%;
-    max-width: 60em;
-    list-style: none;
-    > li {
-      margin-bottom: 2em;
+    #posts-list {
+      width: 100%;
+      list-style: none;
     }
   }
 }

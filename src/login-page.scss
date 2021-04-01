@@ -16,7 +16,6 @@
     align-self: flex-start;
     margin: 1em 1.3em;
     font-weight: bold;
-    color: $color-dark;
 
     h1 {
       font-size: 2.4em;
@@ -42,8 +41,7 @@
         color: $color-dark;
         @include media-sm {
           padding: 0.4em 1em;
-          background-color: $color-dark;
-          color: white;
+          background-color: white;
           border-radius: 0.6em;
           margin-bottom: 1.4em;
         }

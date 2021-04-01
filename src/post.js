@@ -82,18 +82,18 @@ export default function Post({ post }) {
       <div className="post-body">
         <p className="post-date">{createdAt}</p>
         <p className="post-content">{post.content}</p>
+      </div>
 
-        <div className="post-statistics">
-          <ContentStatistics
-            reactionsSummary={reactionsSummary}
-            commentsCount={comments.length}
-            parentType="post"
-          />
-        </div>
+      <div className="post-statistics">
+        <ContentStatistics
+          reactionsSummary={reactionsSummary}
+          commentsCount={comments.length}
+          parentType="post"
+        />
+      </div>
 
-        <div className="post-menu">
-          <ContentMenu addReaction={addReaction} />
-        </div>
+      <div className="post-menu">
+        <ContentMenu addReaction={addReaction} />
       </div>
 
       <div className="post-comments">
