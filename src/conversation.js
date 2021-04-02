@@ -1,6 +1,7 @@
 import FullSizedComponent from "./full-sized-component";
 import LoadableComponent from "./loadable-component";
 import Message from "./message";
+import ProfileStatus from "./profile-status";
 import { useFetchUser, useFetchMessages } from "./custom-hooks";
 import { authContext } from "./auth";
 import "./conversation.scss";
@@ -55,6 +56,7 @@ export default function Conversation({ friendId }) {
           <div id="conversation">
             <header>
               <h1>{friend.firstName + " " + friend.lastName}</h1>
+              <ProfileStatus status={friend.status} />
             </header>
             <ol id="messages-list">
               {messages.map((message) => (

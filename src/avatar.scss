@@ -16,7 +16,7 @@
     overflow: hidden;
   }
 
-  .profile-status {
+  .avatar-profile-status {
     height: 0.6em;
     width: 0.6em;
     border: 2px solid white;
@@ -24,13 +24,10 @@
     position: absolute;
     bottom: -0.15em;
     right: -0.15em;
+    background-color: $mono-medium;
 
     &.online {
-      background-color: $color-medium;
-    }
-
-    &.offline {
-      background-color: lightgray;
+      background-color: $color-light;
     }
   }
 }

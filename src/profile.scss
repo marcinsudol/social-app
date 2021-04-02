@@ -24,15 +24,23 @@
       }
     }
 
-    #profile-header {
+    #profile-info {
       margin: 1em;
       padding: 1em;
       background-color: white;
       border-radius: 0.6em;
 
-      .display-name {
-        font-size: 1.6em;
-        color: $color-medium;
+      #profile-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .display-name {
+          display: inline-block;
+          font-size: 1.6em;
+          color: $color-medium;
+          margin-right: 0.4em;
+        }
       }
     }
 

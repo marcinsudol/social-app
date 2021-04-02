@@ -1,6 +1,7 @@
 import LoadableComponent from "./loadable-component";
 import FullSizedComponent from "./full-sized-component";
 import ProfileStatisticCard from "./profile-statistic-card";
+import ProfileStatus from "./profile-status";
 import Avatar from "./avatar";
 import { useFetchUser } from "./custom-hooks";
 import { authContext } from "./auth";
@@ -24,10 +25,13 @@ export default function Profile({ userId }) {
                 <Avatar user={user} fontSize={"5em"} />
               </div>
               <div>
-                <div id="profile-header">
-                  <h1 className="display-name">
-                    {user.firstName + " " + user.lastName}
-                  </h1>
+                <div id="profile-info">
+                  <div id="profile-header">
+                    <h1 className="display-name">
+                      {user.firstName + " " + user.lastName}
+                    </h1>
+                    <ProfileStatus status={user.status} />
+                  </div>
                   <p>{user.info}</p>
                 </div>
                 <div id="profile-statistics">

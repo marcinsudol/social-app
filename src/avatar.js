@@ -16,10 +16,10 @@ export default function Avatar({ user, fontSize, displayStatus }) {
         <p>{initials}</p>
       </div>
       {displayStatus && user.status === "online" && (
-        <div className="profile-status online"></div>
+        <div className="avatar-profile-status online"></div>
       )}
       {displayStatus && user.status === "offline" && (
-        <div className="profile-status offline"></div>
+        <div className="avatar-profile-status offline"></div>
       )}
     </div>
   );

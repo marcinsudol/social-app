@@ -1,0 +1,15 @@
+@import "./variables-mixins.scss";
+
+.profile-status {
+  display: inline-block;
+  font-size: 0.8em;
+  padding: 0.3em 1em;
+  border-radius: 999px;
+  background-color: $mono-medium;
+  color: black;
+  text-transform: uppercase;
+
+  &.online {
+    background-color: $color-light;
+  }
+}
