@@ -1,0 +1,36 @@
+@import "./variables-mixins.scss";
+
+.dropdown-menu {
+  position: relative;
+
+  button {
+    padding: 0.4em;
+    border: none;
+    background-color: transparent;
+
+    svg {
+      display: block;
+      font-size: 1.3em;
+      color: $color-dark;
+    }
+  }
+
+  ol {
+    position: absolute;
+    list-style: none;
+    padding: 0 0.6em;
+    background-color: white;
+    box-shadow: 0 0 6px $mono-medium;
+    li {
+      padding: 0.3em 0.6em;
+      &:not(:last-child) {
+        border-bottom: 1px solid $mono-medium;
+      }
+
+      a {
+        display: block;
+        white-space: nowrap;
+      }
+    }
+  }
+}

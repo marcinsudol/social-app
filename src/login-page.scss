@@ -38,7 +38,6 @@
 
       li {
         display: inline-block;
-        color: $color-dark;
         @include media-sm {
           padding: 0.4em 1em;
           background-color: white;

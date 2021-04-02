@@ -6,6 +6,8 @@ import ContentMenu from "./content-menu";
 import { useDisplayDate, useReactionsSummary } from "./custom-hooks";
 import { authContext } from "./auth";
 import CommentsList from "./comments-list";
+import DropdownMenu from "./dropdown-menu";
+import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
   const [reactions, setReactions] = useState(post.reactions);
@@ -77,6 +79,10 @@ export default function Post({ post }) {
         <h2 className="post-header-text">
           {post.user.firstName + " " + post.user.lastName}
         </h2>
+        <DropdownMenu>
+          <Link to={"/app/friends/" + post.userId}>Go to profile</Link>
+          <Link to={"/app/messages/" + post.userId}>Start conversation</Link>
+        </DropdownMenu>
       </div>
 
       <div className="post-body">
