@@ -17,6 +17,9 @@ export default function CommentsList({ comments, addComment }) {
               setInputVisible(false);
             }}
             setFocus={true}
+            unfocused={() => {
+              setInputVisible(false);
+            }}
           />
         ) : (
           <button
