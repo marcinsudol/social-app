@@ -27,7 +27,7 @@ export default function ContentInput({
   const onKeyUp = useCallback(
     (e) => {
       e.preventDefault();
-      if (e.target.value === "" && e.key === "Escape") {
+      if (unfocused && e.target.value === "" && e.key === "Escape") {
         unfocused();
       }
     },

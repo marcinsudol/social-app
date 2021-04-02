@@ -4,15 +4,48 @@
   padding: 1em;
   background-color: $mono-light;
 
-  h1 {
-    font-size: 2em;
-    margin-bottom: 0.5em;
+  header {
+    margin-bottom: 1em;
+
+    h1 {
+      font-size: 2em;
+      color: $color-medium;
+      margin-bottom: 0.4em;
+      @include media-sm {
+        margin-bottom: 0em;
+      }
+    }
+
+    #find-friend-input {
+      font-size: 0.9em;
+    }
+
+    @include media-sm {
+      display: grid;
+      grid-template-columns: 1fr 24em 1fr;
+      align-items: center;
+    }
+  }
+
+  #remove-pattern-button {
+    font-size: 1.3em;
+    margin: 0.6em auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     color: $color-medium;
+    border: none;
+    background-color: transparent;
+
+    svg {
+      margin-right: 0.4em;
+      font-size: 1.1em;
+    }
   }
 
   #friends-cards {
     display: grid;
     gap: 0.4em;
-    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(14em, 1fr));
   }
 }
