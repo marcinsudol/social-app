@@ -1,3 +1,0 @@
-add
-friends, comments, posts statistics to every profile
-one line input

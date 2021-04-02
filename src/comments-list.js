@@ -11,7 +11,7 @@ export default function CommentsList({ comments, addComment }) {
         {inputVisible ? (
           <ContentInput
             buttonLabel="Add comment"
-            rows="1"
+            rows="2"
             submit={(content) => {
               addComment(content);
               setInputVisible(false);

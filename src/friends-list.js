@@ -44,7 +44,6 @@ export default function FriendsList() {
             <div id="find-friend-input">
               <ContentInput
                 buttonLabel="Find"
-                rows="1"
                 submit={(content) => {
                   setPattern(content);
                 }}

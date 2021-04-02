@@ -42,7 +42,12 @@ export default function ContentInput({
 
   return (
     <form className="input-form" onSubmit={onSubmit}>
-      <textarea rows={rows || "3"} ref={inputRef} onKeyUp={onKeyUp} />
+      {!isNaN(rows) ? (
+        <textarea rows={rows} ref={inputRef} onKeyUp={onKeyUp} />
+      ) : (
+        <input ref={inputRef} onKeyUp={onKeyUp} />
+      )}
+
       <button type="submit">{buttonLabel || "Submit"}</button>
     </form>
   );

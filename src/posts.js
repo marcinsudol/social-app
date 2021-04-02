@@ -51,7 +51,11 @@ export default function Posts() {
         <div id="posts-wrapper">
           <div id="posts">
             <div id="new-post-form">
-              <ContentInput buttonLabel="Publish" submit={publishPost} />
+              <ContentInput
+                buttonLabel="Publish"
+                rows="3"
+                submit={publishPost}
+              />
             </div>
             <ol id="posts-list">
               {posts
