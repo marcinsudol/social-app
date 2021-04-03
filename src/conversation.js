@@ -2,13 +2,13 @@ import FullSizedComponent from "./full-sized-component";
 import LoadableComponent from "./loadable-component";
 import Message from "./message";
 import ProfileStatus from "./profile-status";
+import ContentInput from "./content-input";
 import { useFetchUser, useFetchMessages } from "./custom-hooks";
 import { authContext } from "./auth";
-import "./conversation.scss";
 import { useCallback, useContext, useEffect, useState, useMemo } from "react";
-import ContentInput from "./content-input";
+import "./conversation.scss";
 
-export default function Conversation({ friendId }) {
+export default function Conversation({ friendId, scrollToBottom }) {
   const [messages, setMessages] = useState(null);
   const auth = useContext(authContext);
   const [friend, friendError] = useFetchUser(friendId);
@@ -38,6 +38,11 @@ export default function Conversation({ friendId }) {
     [auth, friendId, messages]
   );
 
+  // if messages change, scroll to bottom
+  useEffect(() => {
+    if (scrollToBottom) scrollToBottom();
+  }, [messages, scrollToBottom]);
+
   const error = useMemo(
     () => (friendError || messagesError ? "Error fetching data" : null),
     [friendError, messagesError]
@@ -66,7 +71,13 @@ export default function Conversation({ friendId }) {
               ))}
             </ol>
             <div id="new-message-form">
-              <ContentInput buttonLabel="Send" rows="2" submit={sendMessage} />
+              <ContentInput
+                buttonLabel="Send"
+                rows="2"
+                submit={sendMessage}
+                focusOnRender={true}
+                focusAfterSubmit={true}
+              />
             </div>
           </div>
         ) : null}

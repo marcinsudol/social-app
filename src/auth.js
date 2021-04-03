@@ -5,7 +5,7 @@ export const authContext = createContext();
 
 export const useAuth = () => {
   const [userId, setUserId] = useState(false);
-  const [user, error] = useFetchUser(userId);
+  const [user] = useFetchUser(userId);
 
   const logged = useMemo(() => !!userId, [userId]);
 

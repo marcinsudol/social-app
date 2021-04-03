@@ -7,11 +7,8 @@ export default function LoginPage() {
       <header>
         <h1>Social App</h1>
         <ul>
-          <li>Only Front-End part of the page</li>
-          <li>Mockup data fetched from json files</li>
-          <li>
-            Press <strong>Log in</strong> to start
-          </li>
+          <li>Only Front-End part of the app</li>
+          <li>Mock data fetched from json files</li>
         </ul>
       </header>
 

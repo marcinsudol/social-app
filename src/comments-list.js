@@ -16,8 +16,8 @@ export default function CommentsList({ comments, addComment }) {
               addComment(content);
               setInputVisible(false);
             }}
-            setFocus={true}
-            unfocused={() => {
+            focusOnMount={true}
+            escapeKeyCallback={() => {
               setInputVisible(false);
             }}
           />

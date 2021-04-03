@@ -6,8 +6,10 @@ export default function ContentInput({
   buttonLabel,
   rows,
   submit,
-  setFocus,
-  unfocused,
+  focusOnMount,
+  focusOnRender,
+  focusAfterSubmit,
+  escapeKeyCallback,
 }) {
   const inputRef = useRef();
 
@@ -18,27 +20,45 @@ export default function ContentInput({
       if (newContent) {
         // create new message object
         submit(newContent);
+        // clear input
         inputRef.current.value = "";
+        // restore focus
+        if (focusAfterSubmit) {
+          inputRef.current.focus();
+        }
       }
     },
-    [submit]
+    [submit, focusAfterSubmit]
   );
 
   const onKeyUp = useCallback(
     (e) => {
       e.preventDefault();
-      if (unfocused && e.target.value === "" && e.key === "Escape") {
-        unfocused();
+      if (escapeKeyCallback && e.target.value === "" && e.key === "Escape") {
+        escapeKeyCallback();
       }
     },
-    [unfocused]
+    [escapeKeyCallback]
   );
 
+  // focus on mount
   useEffect(() => {
-    if (setFocus) {
+    if (focusOnMount) {
       inputRef.current.focus();
     }
-  }, [setFocus]);
+  }, [focusOnMount]);
+
+  // focus on render
+  useEffect(() => {
+    if (focusOnRender) {
+      inputRef.current.focus();
+    }
+  });
+
+  // clear when submit changes
+  useEffect(() => {
+    inputRef.current.value = "";
+  }, [submit]);
 
   return (
     <form className="input-form" onSubmit={onSubmit}>
