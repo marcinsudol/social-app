@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lalezar&family=Poppins&display=swap");
 
 $mono-light: #f8f8f8;
 $mono-light2: rgb(240, 240, 240);
@@ -11,6 +11,7 @@ $color-light: #f9c80e;
 $color-medium: #3083dc;
 $color-dark: #4e4187;
 
+$font-special: "Lalezar", cursive;
 $font-normal: "Poppins", sans-serif;
 
 @mixin media-sm {
