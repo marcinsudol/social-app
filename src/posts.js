@@ -4,6 +4,7 @@ import Post from "./post";
 import ContentInput from "./content-input";
 import { authContext } from "./auth";
 import { useFetchPosts } from "./custom-hooks";
+import SrOnly from "./sr-only";
 import "./posts.scss";
 
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
@@ -50,8 +51,12 @@ export default function Posts() {
       <LoadableComponent loading={!posts && !error} error={error}>
         <div id="posts-wrapper">
           <div id="posts">
+            <SrOnly>
+              <h1>Posts</h1>
+            </SrOnly>
             <div id="new-post-form">
               <ContentInput
+                inputLabel="New post"
                 buttonLabel="Publish"
                 rows="3"
                 submit={publishPost}

@@ -3,6 +3,7 @@ import "./content-input.scss";
 import { useCallback, useEffect, useRef } from "react";
 
 export default function ContentInput({
+  inputLabel,
   buttonLabel,
   rows,
   submit,
@@ -63,9 +64,14 @@ export default function ContentInput({
   return (
     <form className="input-form" onSubmit={onSubmit}>
       {!isNaN(rows) ? (
-        <textarea rows={rows} ref={inputRef} onKeyUp={onKeyUp} />
+        <textarea
+          rows={rows}
+          ref={inputRef}
+          onKeyUp={onKeyUp}
+          aria-label={inputLabel}
+        />
       ) : (
-        <input ref={inputRef} onKeyUp={onKeyUp} />
+        <input ref={inputRef} onKeyUp={onKeyUp} aria-label={inputLabel} />
       )}
 
       <button type="submit">{buttonLabel || "Submit"}</button>

@@ -12,9 +12,9 @@ export default function LoginPage() {
         </ul>
       </header>
 
-      <div id="login-form-container">
+      <main id="login-form-container">
         <LoginForm />
-      </div>
+      </main>
 
       <footer>
         Photo by{" "}

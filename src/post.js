@@ -79,7 +79,7 @@ export default function Post({ post }) {
         <h2 className="post-header-text">
           {post.user.firstName + " " + post.user.lastName}
         </h2>
-        <DropdownMenu>
+        <DropdownMenu buttonLabel="User's menu">
           <Link to={"/app/friends/" + post.userId}>Go to profile</Link>
           <Link to={"/app/messages/" + post.userId}>Start conversation</Link>
         </DropdownMenu>

@@ -43,6 +43,7 @@ export default function FriendsList() {
             <h1>Friends</h1>
             <div id="find-friend-input">
               <ContentInput
+                inputLabel="Friend's name"
                 buttonLabel="Find"
                 submit={(content) => {
                   setPattern(content);
@@ -56,6 +57,7 @@ export default function FriendsList() {
               onClick={() => {
                 setPattern("");
               }}
+              aria-label="Remove filter"
             >
               <CloseIcon />
               {pattern}

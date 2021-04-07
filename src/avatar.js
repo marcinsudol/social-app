@@ -13,7 +13,7 @@ export default function Avatar({ user, fontSize, displayStatus }) {
         className="avatar"
         style={{ backgroundColor: user.color, color: fontColor }}
       >
-        <p>{initials}</p>
+        <p aria-hidden={true}>{initials}</p>
       </div>
       {displayStatus && user.status === "online" && (
         <div className="avatar-profile-status online"></div>

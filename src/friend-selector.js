@@ -17,7 +17,7 @@ export function FriendSelector() {
   return (
     <LoadableComponent loading={!friends && !error}>
       {friends ? (
-        <nav id="friend-selector">
+        <nav id="friend-selector" aria-label="Friend selector">
           {friends.map((user) => (
             <Link to={`/app/messages/${user.id}`} key={user.id}>
               <Avatar user={user} fontSize={"1.6em"} displayStatus={true} />

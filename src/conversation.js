@@ -72,6 +72,7 @@ export default function Conversation({ friendId, scrollToBottom }) {
             </ol>
             <div id="new-message-form">
               <ContentInput
+                inputLabel="New message"
                 buttonLabel="Send"
                 rows="2"
                 submit={sendMessage}

@@ -7,9 +7,9 @@ export default function AppPage() {
   return (
     <div id="app-page">
       <AppHeader />
-      <div id="app-content-wrapper">
+      <main>
         <AppContent />
-      </div>
+      </main>
     </div>
   );
 }

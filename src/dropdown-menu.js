@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { IoEllipsisHorizontal } from "react-icons/io5";
 import "./dropdown-menu.scss";
 
-export default function DropdownMenu({ children }) {
+export default function DropdownMenu({ buttonLabel, children }) {
   const [visible, setVisible] = useState(false);
   const dropdownRef = useRef();
 
@@ -21,6 +21,7 @@ export default function DropdownMenu({ children }) {
   return (
     <div className="dropdown-menu" ref={dropdownRef}>
       <button
+        aria-label={buttonLabel}
         onClick={(e) => {
           e.preventDefault();
           setVisible(true);
